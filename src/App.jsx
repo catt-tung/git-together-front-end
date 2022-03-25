@@ -10,6 +10,7 @@ import MyProjects from './components/MyProjects/MyProjects'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddSocialPost from './pages/AddSocialPost/AddSocialPost'
+import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -26,41 +27,42 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="App">
       <NavBar user={user} handleLogout={handleLogout} />
-      <Routes>
-        <Route path="/" element={<Landing user={user} />} />
-        <Route
-          path="/signup"
-          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-        <Route
-          path="/login"
-          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-        <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
-        />
-        <Route 
-          path="/myProjects" 
-          element={user ? <MyProjects /> : <Navigate to="/login" />} 
-        />
-        <Route 
-          path="/socialFeed" 
-          element={user ? <SocialFeed /> : <Navigate to="/login" />} 
-        />
-        <Route
-          path="/addSocialPost"
-          element={user ? <AddSocialPost /> : <Navigate to="/login" />} 
-        />
-      </Routes>
-        
-    </>
+      <main>
+        <Routes>
+          <Route path="/" element={<Landing user={user} />} />
+          <Route
+            path="/signup"
+            element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+          />
+          <Route
+            path="/login"
+            element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+          />
+          <Route
+            path="/profiles"
+            element={user ? <Profiles /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/changePassword"
+            element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          />
+          <Route 
+            path="/myProjects" 
+            element={user ? <MyProjects /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/socialFeed" 
+            element={user ? <SocialFeed /> : <Navigate to="/login" />} 
+          />
+          <Route
+            path="/addSocialPost"
+            element={user ? <AddSocialPost /> : <Navigate to="/login" />} 
+          />
+        </Routes>
+      </main>
+    </div>  
   )
 }
 
