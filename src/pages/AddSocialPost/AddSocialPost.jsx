@@ -16,11 +16,16 @@ const AddSocialPost = (props) => {
   useEffect(() => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
+
+  const handleSubmit = evt => {
+		evt.preventDefault()
+    props.handleAddPost(formData)
+	}
   
   return (
   <>
     <h1>Add Post</h1>
-      <form autoComplete="off" ref={formElement}>
+      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
         <div>
           <textarea 
             type="text"
