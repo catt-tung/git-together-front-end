@@ -5,10 +5,11 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
-import SocialFeed from './components/SocialFeed/SocialFeed'
+import SocialFeed from './pages/SocialFeed/SocialFeed'
 import MyProjects from './components/MyProjects/MyProjects'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import AddSocialPost from './pages/AddSocialPost/AddSocialPost'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -47,11 +48,17 @@ const App = () => {
         />
         <Route 
           path="/myProjects" 
-          element={user ? <MyProjects /> : <Navigate to="/myProjects" />} />
+          element={user ? <MyProjects /> : <Navigate to="/login" />} 
+        />
         <Route 
           path="/socialFeed" 
-          element={user ? <SocialFeed /> : <Navigate to="/socialFeed" />} />
-        </Routes>
+          element={user ? <SocialFeed /> : <Navigate to="/login" />} 
+        />
+        <Route
+          path="/addSocialPost"
+          element={user ? <AddSocialPost /> : <Navigate to="/login" />} 
+        />
+      </Routes>
         
     </>
   )
