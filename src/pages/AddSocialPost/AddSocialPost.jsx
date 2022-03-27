@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from "react"
+import * as postService from '../../services/posts'; 
+import { useNavigate } from "react-router-dom";
 
 const AddSocialPost = (props) => {
   const formElement = useRef()
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     content: ''
@@ -17,9 +20,14 @@ const AddSocialPost = (props) => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
+  const handleAddPost = async newPostData => {
+    await postService.create(newPostData)
+    navigate('/socialFeed')
+  }
+
   const handleSubmit = evt => {
 		evt.preventDefault()
-    props.handleAddPost(formData)
+    handleAddPost(formData)
 	}
   
   return (
