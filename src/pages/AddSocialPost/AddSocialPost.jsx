@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import * as postService from '../../services/posts'; 
 
 const AddSocialPost = (props) => {
   const formElement = useRef()
@@ -17,9 +18,13 @@ const AddSocialPost = (props) => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
+  const handleAddPost = async newPostData => {
+    const newPost = await postService.create(newPostData)
+  }
+
   const handleSubmit = evt => {
 		evt.preventDefault()
-    props.handleAddPost(formData)
+    handleAddPost(formData)
 	}
   
   return (
