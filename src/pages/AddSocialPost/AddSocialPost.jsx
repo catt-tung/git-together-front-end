@@ -54,5 +54,5 @@ const AddSocialPost = (props) => {
   </>
   );
 }
- 
+
 export default AddSocialPost;
