@@ -18,6 +18,7 @@ const SocialFeed = () => {
       {posts.map((post) => (
         <>
           <h5>{post.content}</h5>
+          <button>&times;</button>
         </>
         ))}
       
