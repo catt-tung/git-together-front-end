@@ -11,6 +11,10 @@ const SocialFeed = () => {
     .then(postsData => setPosts(postsData))
   }, [])
 
+  const handleDeletePost = id => {
+    postService.deleteOne(id)
+    .then(deletedPost => setPosts(posts.filter(post => post._id !== deletedPost._id)))
+  }
 
   return ( 
     <>
@@ -18,7 +22,7 @@ const SocialFeed = () => {
       {posts.map((post) => (
         <>
           <h5>{post.content}</h5>
-          <button>&times;</button>
+          <button onClick={() => handleDeletePost(post._id)}>&times;</button>
         </>
         ))}
       
