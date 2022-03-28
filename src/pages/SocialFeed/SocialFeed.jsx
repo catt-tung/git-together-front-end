@@ -24,7 +24,7 @@ const SocialFeed = () => {
           <h5>{post.content}</h5>
           <button onClick={() => handleDeletePost(post._id)}>&times;</button>
           <Link
-            className='btn btn-sm btn-warning'
+            className='btn btn-sm btn-info'
             to='/editSocialPost'
             state={{post}}
         >
