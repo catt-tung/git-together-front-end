@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
+import { useNavigate, useLocation } from "react-router-dom";
 import * as postService from '../../services/posts'; 
-import { useNavigate, Link, useLocation } from "react-router-dom";
 
 const EditSocialPost = (props) => {
   const formElement = useRef()

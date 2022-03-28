@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import AddSocialPost from "../AddSocialPost/AddSocialPost";
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import * as postService from '../../services/posts'; 
 
