@@ -23,6 +23,13 @@ const SocialFeed = () => {
         <>
           <h5>{post.content}</h5>
           <button onClick={() => handleDeletePost(post._id)}>&times;</button>
+          <Link
+            className='btn btn-sm btn-warning'
+            to='/editSocialPost'
+            state={{post}}
+        >
+          Edit
+        </Link>
         </>
         ))}
       
