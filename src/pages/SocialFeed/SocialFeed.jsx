@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import AddSocialPost from "../AddSocialPost/AddSocialPost";
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import * as postService from '../../services/posts'; 
 
@@ -23,6 +22,13 @@ const SocialFeed = () => {
         <>
           <h5>{post.content}</h5>
           <button onClick={() => handleDeletePost(post._id)}>&times;</button>
+          <Link
+            className='btn btn-sm btn-info'
+            to='/editSocialPost'
+            state={{post}}
+        >
+          Edit
+        </Link>
         </>
         ))}
       

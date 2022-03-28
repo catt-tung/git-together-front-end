@@ -10,6 +10,7 @@ import MyProjects from './components/MyProjects/MyProjects'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddSocialPost from './pages/AddSocialPost/AddSocialPost'
+import EditSocialPost from './pages/EditSocialPost/EditSocialPost'
 import './App.css'
 
 const App = () => {
@@ -59,6 +60,10 @@ const App = () => {
           <Route
             path="/addSocialPost"
             element={user ? <AddSocialPost /> : <Navigate to="/login" />} 
+          />
+          <Route
+            path="/editSocialPost"
+            element={user ? <EditSocialPost /> : <Navigate to="/login" />} 
           />
         </Routes>
       </main>
