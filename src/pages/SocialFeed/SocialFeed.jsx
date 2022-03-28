@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import * as postService from '../../services/posts'; 
+import * as postService from '../../services/posts';
+import AddComment from '../../components/AddComment/AddComment';
 
 const SocialFeed = () => {
   const [posts, setPosts] = useState([])
@@ -18,9 +19,18 @@ const SocialFeed = () => {
   return ( 
     <>
       <h1>Social Feed</h1>
+      <Link 
+        to="/addSocialPost" 
+      >
+        <button>
+          Add Post
+        </button>
+      </Link>
+
       {posts.map((post) => (
         <>
           <h5>{post.content}</h5>
+          <AddComment />
           <button onClick={() => handleDeletePost(post._id)}>&times;</button>
           <Link
             className='btn btn-sm btn-info'
@@ -32,13 +42,6 @@ const SocialFeed = () => {
         </>
         ))}
       
-      <Link 
-        to="/addSocialPost" 
-      >
-        <button>
-          Add Post
-        </button>
-      </Link>
 
     </>
       
