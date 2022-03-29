@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-
 const AddGoal = (props) => {
     const [validForm, setValidForm] = useState(false)
     const [formData, setFormData] = useState({
@@ -44,7 +43,7 @@ const AddGoal = (props) => {
           </div>
           <div className="gorm-group mb-3">
             <label htmlFor="date-input" className="form-label">
-              Puppy's Breed (required)
+              Projected Complete Date
             </label>
             <input 
               type="date"
@@ -53,19 +52,17 @@ const AddGoal = (props) => {
               name="date"
               value={formData.date}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="form-group mb-4">
             <label htmlFor="age-input" className="form-label">
-              Puppy's Age
+              Completed?
             </label>
             <input 
-              type="number"
-              className="form-control"
-              id="age-input"
-              name="age"
-              value={formData.age}
+              type="checkbox"
+              id="complete-input"
+              name="complete"
+              value={formData.complete}
               onChange={handleChange}
             />
           </div>
