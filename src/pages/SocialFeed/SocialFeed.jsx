@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import * as postService from '../../services/posts';
 // import * as commentService  from '../../services/comments'
 import AddComment from '../../components/AddComment/AddComment';
+import AllComments from '../../components/AllComments/AllComments';
 import useCollapse from 'react-collapsed'
 
-const SocialFeed = () => {
+const SocialFeed = (props) => {
   const [posts, setPosts] = useState([])
 
   const [isExpanded, setExpanded] = useState(false)
@@ -36,7 +37,7 @@ const SocialFeed = () => {
 
       {posts.map((post) => (
         <>
-          <div className='post-container'>
+          <div key={post._id} className='post-container'>
             <h5>{post.content}</h5>
             <h5>By: {post.author}</h5>
             <AddComment state={post._id.comments}/>
@@ -63,11 +64,7 @@ const SocialFeed = () => {
               </button>
                 
               <section {...getCollapseProps()}>
-                {/* {post.comments.map((comment) => (
-                  <h6>
-                    {comment}
-                  </h6>
-                ))} */}
+                <AllComments post={post}/>
               </section>
             </div>
           

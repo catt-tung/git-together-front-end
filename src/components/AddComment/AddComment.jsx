@@ -23,15 +23,18 @@ const AddComment = () => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
-  const handleAddComment = async newCommentData => {
-    // Push comment into posts
-    
-    commentService.create(newCommentData)
-  }
+  // const handleAddComment = async newCommentData => {
+  //   try {
+  //     const newComment = await postService.createComment(props.post._id, formData)
+  //     props.setComments([...props.comments, newComment])
+  //   } catch (error) {
+  //     throw error
+  //   }
+  // }
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-    handleAddComment(formData)
+    // handleAddComment(formData)
 	}
 
   return (
