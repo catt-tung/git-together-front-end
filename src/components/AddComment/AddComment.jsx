@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useCollapse from 'react-collapsed'
+import * as commentService  from '../../services/comments'
 
 
 const AddComment = () => {
@@ -22,9 +23,10 @@ const AddComment = () => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
-  const handleAddComment = async newPostData => {
-    console.log("test")
-    // await postService.create(newPostData)
+  const handleAddComment = async newCommentData => {
+    // Push comment into posts
+    
+    commentService.create(newCommentData)
   }
 
   const handleSubmit = evt => {
@@ -62,18 +64,6 @@ const AddComment = () => {
             </button>
           </form>
         </section>
-      
-      <div>
-        <button
-          {...getToggleProps({
-            onClick: () => setExpanded((prevExpanded) => !prevExpanded),
-          })}
-        >
-          {isExpanded ? 'Collapse' : 'All Comments'}
-        </button>
-        <section {...getCollapseProps()}>Collapsed comments here!</section>
-      </div>
-
     </>
   )
 }

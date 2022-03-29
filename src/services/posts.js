@@ -44,9 +44,22 @@ function update(post) {
   .then(res => res.json())
 }
 
+function createComment(post, comment) {
+  return fetch(`${BASE_URL}/${post._id}/comments`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(comment)
+  })
+  .then(res => res.json())
+}
+
 export {
   getPosts,
   create,
   deleteOne,
   update,
+  createComment
 }
