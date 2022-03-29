@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddGoal from "../../components/Goals/Goals";
 import * as goalService from '../../services/project'
 
