@@ -56,6 +56,15 @@ function createComment(postId, comment) {
   .then(res => res.json())
 }
 
+function getComments(postId){
+  return fetch (`${BASE_URL}/${postId}/comments`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 function deleteOneComment(postId, commentId) {
   return fetch(`${BASE_URL}/${postId}/comments/${commentId}`, {
     method: 'DELETE',
@@ -72,5 +81,6 @@ export {
   deleteOne,
   update,
   createComment,
-  deleteOneComment
+  deleteOneComment,
+  getComments
 }

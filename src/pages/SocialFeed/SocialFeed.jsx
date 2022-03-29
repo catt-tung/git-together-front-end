@@ -70,7 +70,7 @@ const SocialFeed = (props) => {
                     {post.comments.map(comment => 
                       <>
                         <p key={comment._id}>
-                          {comment.content}
+                          <h6>"{comment.content}"</h6> - {comment.author}
                         </p>
                         <button onClick={() => handleDeleteComment(comment._id)}>X</button>
                       </>
