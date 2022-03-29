@@ -5,6 +5,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import SocialFeed from './pages/SocialFeed/SocialFeed'
 import MyProjects from './components/MyProjects/MyProjects'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
@@ -45,6 +46,10 @@ const App = () => {
           <Route
             path="/profiles"
             element={user ? <Profiles /> : <Navigate to="/login" />}
+          />
+            <Route
+            path="/profile"
+            element={user ? <ProfileDetails /> : <Navigate to="/login" />}
           />
           <Route
             path="/changePassword"

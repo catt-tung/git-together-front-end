@@ -4,10 +4,10 @@ const octokit = new Octokit()
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/projects`
 
-async function getRepos() {
+async function getRepos(gitUser) {
   
   const response = await octokit.request('GET /users/{username}/repos', {
-    username: "cmilesh"
+    username: gitUser
   })
 
   const repoData = []

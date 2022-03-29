@@ -9,4 +9,10 @@ async function getAllProfiles() {
   return await res.json()
 }
 
-export { getAllProfiles }
+export function getDetails(id) {
+  return fetch(`${BASE_URL}/${id}`)
+  .then(res => res.json())
+}
+
+export { 
+  getAllProfiles}
