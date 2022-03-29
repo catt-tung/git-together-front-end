@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-
 const MyProjectDetails = () => {
-  const [projectDetails, setProjectDetails] = useState({})
+
 
   return ( 
     <>
