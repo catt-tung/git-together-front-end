@@ -10,10 +10,10 @@ const ProfileDetails = () => {
   useEffect(() => {
     getDetails(location.state.profile._id)
     .then(profileData => setProfileDetails(profileData))
-  })
+  }, [])
 
-  getRepos(profileDetails.gitUser)
-
+  
+  console.log(getRepos(profileDetails.gitUser))
   return ( 
     <>
       <h3>{profileDetails.name} Deets</h3>
