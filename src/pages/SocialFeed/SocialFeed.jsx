@@ -14,7 +14,7 @@ const SocialFeed = (props) => {
   useEffect(() => {
     postService.getPosts()
     .then(postsData => setPosts(postsData))
-  }, [])
+  }, [posts])
 
   const handleDeletePost = id => {
     postService.deleteOne(id)
