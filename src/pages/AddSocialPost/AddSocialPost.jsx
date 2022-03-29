@@ -21,6 +21,7 @@ const AddSocialPost = (props) => {
 	}, [formData])
 
   const handleAddPost = async newPostData => {
+    console.log(newPostData)
     await postService.create(newPostData)
     navigate('/socialFeed')
   }

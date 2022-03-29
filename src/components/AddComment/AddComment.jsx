@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useCollapse from 'react-collapsed'
-import * as commentService  from '../../services/comments'
+import * as postService from '../../services/posts';
 
 
-const AddComment = () => {
+const AddComment = (props) => {
   const formElement = useRef()
 
   const [isExpanded, setExpanded] = useState(false)
@@ -23,19 +23,17 @@ const AddComment = () => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
-  // const handleAddComment = async newCommentData => {
-  //   try {
-  //     const newComment = await postService.createComment(props.post._id, formData)
-  //     props.setComments([...props.comments, newComment])
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
+  const handleAddComment = async newCommentData => {
+    console.log(props.post._id)
+    await postService.createComment(props.post._id, newCommentData)
+  }
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-    // handleAddComment(formData)
+    handleAddComment(formData)
+    // alert("comment submitted!")
 	}
+  console.log(formData.content)
 
   return (
     <>
@@ -63,7 +61,7 @@ const AddComment = () => {
               type="submit"
               disabled={!validForm}
             >
-              Submit Post
+              Submit Comment
             </button>
           </form>
         </section>
