@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import * as postService from '../../services/posts';
-// import * as commentService  from '../../services/comments'
 import AddComment from '../../components/AddComment/AddComment';
 import AllComments from '../../components/AllComments/AllComments';
 import useCollapse from 'react-collapsed'
@@ -15,8 +14,6 @@ const SocialFeed = (props) => {
   useEffect(() => {
     postService.getPosts()
     .then(postsData => setPosts(postsData))
-    // commentService.getComments()
-    // .then(commentsData => setComments(commentsData))
   }, [])
 
   const handleDeletePost = id => {
@@ -40,7 +37,7 @@ const SocialFeed = (props) => {
           <div key={post._id} className='post-container'>
             <h5>{post.content}</h5>
             <h5>By: {post.author}</h5>
-            <AddComment state={post._id.comments}/>
+            <AddComment post={post}/>
 
             <button onClick={() => handleDeletePost(post._id)}>Delete</button>
 

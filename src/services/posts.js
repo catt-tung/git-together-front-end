@@ -45,7 +45,7 @@ function update(post) {
 }
 
 function createComment(post, comment) {
-  return fetch(`${BASE_URL}/${post._id}/comments`, {
+  return fetch(`${BASE_URL}/${post}/comments`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
