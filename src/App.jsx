@@ -13,6 +13,7 @@ import AddSocialPost from './pages/AddSocialPost/AddSocialPost'
 import EditSocialPost from './pages/EditSocialPost/EditSocialPost'
 import './App.css'
 import MyProjectDetails from './pages/MyProjectDetails/MyProjectDetails'
+import AddProject from './pages/AddProject/AddProject'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -70,6 +71,11 @@ const App = () => {
           <Route
             path="/myProjects/sampleRepo"
             element={user ? <MyProjectDetails /> : <Navigate to="/login" />} 
+          />
+          //for now I am adding a route so I can test functionality; later on the repos need to be linking to this//
+          <Route
+            path="/myProjects/new"
+            element={user ? <AddProject /> : <Navigate to="/login" />} 
           />
         </Routes>
       </main>
