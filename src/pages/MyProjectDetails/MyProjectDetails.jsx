@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import AddGoal from "../../components/Goals/Goals";
 
 const MyProjectDetails = () => {
-  const [projectDetails, setProjectDetails] = useState({})
-
   return ( 
     <>
       <h1>Project Details Component</h1>
+      <AddGoal />
     </>
   );
 }
