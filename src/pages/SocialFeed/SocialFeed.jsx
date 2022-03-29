@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import * as postService from '../../services/posts';
 import AddComment from '../../components/AddComment/AddComment';
-import AllComments from '../../components/AllComments/AllComments';
 import useCollapse from 'react-collapsed'
 
 const SocialFeed = (props) => {
@@ -19,6 +18,11 @@ const SocialFeed = (props) => {
   const handleDeletePost = id => {
     postService.deleteOne(id)
     .then(deletedPost => setPosts(posts.filter(post => post._id !== deletedPost._id)))
+  }
+
+  const handleDeleteComment = id => {
+    postService.deleteOneComment(id)
+    .then(deletedComment => setPosts(posts.comments.filter(comment => comment._id !== deletedComment._id)))
   }
 
   return ( 
@@ -61,7 +65,17 @@ const SocialFeed = (props) => {
               </button>
                 
               <section {...getCollapseProps()}>
-                <AllComments post={post}/>
+                <>
+                  <h5>All Comments:</h5>
+                    {post.comments.map(comment => 
+                      <>
+                        <p key={comment._id}>
+                          {comment.content}
+                        </p>
+                        <button onClick={() => handleDeleteComment(comment._id)}>X</button>
+                      </>
+                  )}
+                </>
               </section>
             </div>
           
