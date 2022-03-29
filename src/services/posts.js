@@ -44,8 +44,8 @@ function update(post) {
   .then(res => res.json())
 }
 
-function createComment(post, comment) {
-  return fetch(`${BASE_URL}/${post}/comments`, {
+function createComment(postId, comment) {
+  return fetch(`${BASE_URL}/${postId}/comments`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -56,10 +56,21 @@ function createComment(post, comment) {
   .then(res => res.json())
 }
 
+function deleteOneComment(postId, commentId) {
+  return fetch(`${BASE_URL}/${postId}/comments/${commentId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 export {
   getPosts,
   create,
   deleteOne,
   update,
-  createComment
+  createComment,
+  deleteOneComment
 }
