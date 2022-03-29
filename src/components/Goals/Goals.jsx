@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import * as projectService from '../../services/project'
 
 const AddGoal = (props) => {
     const [validForm, setValidForm] = useState(false)
@@ -18,9 +19,13 @@ const AddGoal = (props) => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
+  const handleAddGoal = async newGoalData => {
+    await projectService.create(newGoalData)
+  }
+
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleAddGoal(formData)
+    handleAddGoal(formData)
   }
 
   return ( 
