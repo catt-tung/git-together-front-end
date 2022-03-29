@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/core"
+import * as tokenService from './tokenService'
 
 const octokit = new Octokit()
 
@@ -28,7 +29,17 @@ function create(goal) {
   .then(res => res.json())
 }
 
+function getGoals() {
+  return fetch(BASE_URL, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 export {
   getRepos,
   create,
+  getGoals,
 }
