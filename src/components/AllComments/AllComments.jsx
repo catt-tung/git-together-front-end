@@ -3,10 +3,10 @@
 const AllComments = (props) => {
   const {comments} = props.post
 
-  const handleDeleteComment = id => {
-    postService.deleteOneComment(id)
-    // .then(deletedComment => setPosts(posts.filter(post => post._id !== deletedPost._id)))
-  }
+  // const handleDeleteComment = id => {
+  //   postService.deleteOneComment(id)
+  //   // .then(deletedComment => setPosts(posts.filter(post => post._id !== deletedPost._id)))
+  // }
 
   return ( 
   <>

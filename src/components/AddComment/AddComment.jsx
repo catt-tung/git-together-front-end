@@ -24,15 +24,14 @@ const AddComment = (props) => {
 	}, [formData])
 
   const handleAddComment = async newCommentData => {
-    console.log(props.post._id)
     await postService.createComment(props.post._id, newCommentData)
   }
 
   const handleSubmit = evt => {
 		evt.preventDefault()
     handleAddComment(formData)
-    // alert("comment submitted!")
-	}
+    setFormData({content: ''})
+  }
   console.log(formData.content)
 
   return (
