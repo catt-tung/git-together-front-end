@@ -17,20 +17,11 @@ useEffect(() => {
   .then(projectData => setProjects(projectData))
 }, [])
 
-console.log(repoList)
+
 console.log(projects)
   return ( 
     <>
-      <h1>Here are your projects</h1>
-      <ul>
-        {repoList.map(repo => (
-            
-        <li>
-          {repo}
-        </li>
-          ))
-        }
-      </ul>
+
       <h1>List of created projects</h1>
       {projects.map(project => (
         <div>
