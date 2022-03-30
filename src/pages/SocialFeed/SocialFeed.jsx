@@ -20,9 +20,22 @@ const SocialFeed = (props) => {
     .then(deletedPost => setPosts(posts.filter(post => post._id !== deletedPost._id)))
   }
 
-  const handleDeleteComment = (postId, commentId) => {
-    postService.deleteOneComment(postId, commentId)
-    // .then(deletedComment => setPosts(posts.comments.filter(comment => comment._id !== deletedComment._id)))
+  const handleDeleteComment = async (postId, commentId) => {
+    // delete comment
+    await postService.deleteOneComment(postId, commentId)
+    
+    // adjust comments state to reflect deletion
+    const updatedPost = posts.filter(post => post._id === postId)
+    const updatedComments = updatedPost[0].comments.filter(comment => comment._id !== commentId)
+    updatedPost.comments = updatedComments
+    setPosts([updatedPost])
+  }
+
+  const handleAddComment = async (id, newCommentData) => {
+    console.log(id, newCommentData)
+    const updatedPost = await postService.createComment(id, newCommentData)
+    setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
+
   }
 
   return ( 
@@ -40,8 +53,8 @@ const SocialFeed = (props) => {
         <>
           <div key={post._id} className='post-container'>
             <h5>{post.content}</h5>
-            <h5>By: {post.author}</h5>
-            <AddComment post={post}/>
+            <h5>By: {post.author.name}</h5>
+            <AddComment post={post} handleAddComment={handleAddComment}/>
 
             <button onClick={() => handleDeletePost(post._id)}>Delete</button>
 
@@ -70,9 +83,9 @@ const SocialFeed = (props) => {
                     {post.comments.map(comment => 
                       <>
                         <p key={comment._id}>
-                          <h6>"{comment.content}"</h6> - {comment.author}
+                          <h6>"{comment.content}"</h6> - {comment.author.name}
                         </p>
-                        <button onClick={() => handleDeleteComment(post._id, comment._id)}>X</button>
+                        <button onClick={async () => await handleDeleteComment(post._id, comment._id)}>X</button>
                       </>
                   )}
                 </>

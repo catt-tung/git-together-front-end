@@ -23,16 +23,11 @@ const AddComment = (props) => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
-  const handleAddComment = async newCommentData => {
-    await postService.createComment(props.post._id, newCommentData)
-  }
-
   const handleSubmit = evt => {
 		evt.preventDefault()
-    handleAddComment(formData)
+    props.handleAddComment(props.post._id, formData)
     setFormData({content: ''})
   }
-  console.log(formData.content)
 
   return (
     <>
