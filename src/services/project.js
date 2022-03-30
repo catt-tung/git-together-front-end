@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/core"
+import AddProject from "../pages/AddProject/AddProject"
 import * as tokenService from './tokenService'
 
 const octokit = new Octokit()
@@ -38,8 +39,19 @@ function getGoals() {
   .then(res => res.json())
 }
 
+function createProject(project) {
+  return fetch(BASE_URL, {
+    method: 'POST',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify(project)
+  })
+	.then(res => res.json())
+}
+
+
 export {
   getRepos,
   create,
   getGoals,
+  createProject,
 }
