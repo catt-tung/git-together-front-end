@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AddGoal from "../../components/Goals/Goals";
 import * as goalService from '../../services/project'
 
@@ -16,15 +16,32 @@ const AddProject = () => {
     completionDate: '',
   })
 
+  const handleChange = evt => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  const [validForm, setValidForm] = useState(false)
+
+  const formElement = useRef()
+
+  useEffect(() => {
+		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+	}, [formData])
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+  }
+
+
   return ( 
     <>
       <h1>Page to Add New Projects</h1>
       <h1>Create a New Project</h1>
-      <form autoComplete="off">
+      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-control"
+					<label htmlFor="repo-input" className="form-control"
           >
-						Select a repository:
+            Select a repository:
 					</label>
 					<input 
 						type="select"
@@ -32,6 +49,7 @@ const AddProject = () => {
 						id="repo-input"
 						name="repo"
             value={formData.repo}
+            onChange={handleChange}
 						required
 					/>
 				</div>
@@ -45,6 +63,7 @@ const AddProject = () => {
 						id="age-input"
 						name="age"
             value={formData.image}
+            onChange={handleChange}
 					/>
 				</div>
 				<div className="form-group mb-3">
@@ -57,6 +76,7 @@ const AddProject = () => {
 						id="date-input"
 						name="completionDate"
             value={formData.completionDate}
+            onChange={handleChange}
 						required
 					/>
 				</div>
@@ -64,6 +84,7 @@ const AddProject = () => {
 					<button
 						type="submit"
 						className="btn btn-primary btn-fluid"
+            disabled={!validForm}
 					>
 						Create Project
 					</button>
