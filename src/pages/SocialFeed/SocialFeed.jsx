@@ -21,21 +21,17 @@ const SocialFeed = (props) => {
   }
 
   const handleDeleteComment = async (postId, commentId) => {
-    // delete comment
-    await postService.deleteOneComment(postId, commentId)
-    
-    // adjust comments state to reflect deletion
-    const updatedPost = posts.filter(post => post._id === postId)
-    const updatedComments = updatedPost[0].comments.filter(comment => comment._id !== commentId)
-    updatedPost.comments = updatedComments
-    setPosts([updatedPost])
+    // sends delete req to back end
+    const updatedPost = await postService.deleteOneComment(postId, commentId)
+    // sets state for addition of post's comment
+    setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
   }
 
   const handleAddComment = async (id, newCommentData) => {
-    console.log(id, newCommentData)
+    // sends post req to back end
     const updatedPost = await postService.createComment(id, newCommentData)
+    // sets state for addition of post's comment
     setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
-
   }
 
   return ( 
