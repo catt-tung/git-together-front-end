@@ -24,9 +24,12 @@ const MyProjectDetails = (props) => {
       <h5>Repostory name: {location.state.project.repo}</h5>
       <h5>Projected Completion Date: {new Date(location.state.project.completionDate).toLocaleDateString()}</h5>
       <h5>Project Management List</h5>
+      <ul>
       {location.state.project.goals.map(goal => 
-        <p>{goal.goal}</p>
+        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}{}</li>
         )}
+      </ul>
+      
       <AddGoal projectid={location.state.project._id} />
     </>
   );
