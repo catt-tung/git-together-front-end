@@ -10,7 +10,7 @@ const AddGoal = (props) => {
     })
 
   const handleChange = evt => {
-    setFormData({...formData, [evt.target.name]: evt.target.value})
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const formElement = useRef()
