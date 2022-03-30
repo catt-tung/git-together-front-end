@@ -26,7 +26,7 @@ const MyProjectDetails = (props) => {
       <h5>Project Management List</h5>
       <ul>
       {location.state.project.goals.map(goal => 
-        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}{}</li>
+        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}<button>delete</button></li>
         )}
       </ul>
       
