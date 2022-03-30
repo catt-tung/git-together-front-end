@@ -21,6 +21,17 @@ async function getRepos(gitUser) {
   return repoData
 }
 
+async function getAvatar(gitUser) {
+  
+  const response = await octokit.request('GET /users/{username}', {
+    username: gitUser
+  })
+
+  const avatar = response.avatar_url
+
+  return avatar
+}
+
 function create(goal) {
   return fetch(BASE_URL, {
     method: 'POST',
@@ -73,4 +84,5 @@ export {
   getGoals,
   createProject,
   update,
+  getAvatar
 }

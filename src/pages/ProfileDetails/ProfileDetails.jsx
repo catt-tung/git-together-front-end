@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getRepos } from '../../services/project';
 
 const ProfileDetails = () => {
+
   const [profileDetails, setProfileDetails] = useState({})
   let location = useLocation()
 
@@ -12,16 +13,15 @@ const ProfileDetails = () => {
     .then(profileData => setProfileDetails(profileData))
   }, [])
 
+
   
-  console.log(getRepos(profileDetails.gitUser))
+
   return ( 
     <>
-      <h3>{profileDetails.name} Deets</h3>
+      <h3>{profileDetails.name}'s Page</h3>
 
-      <h2>{profileDetails.gitUser} repos</h2>
-      <div>
-        
-        </div>
+      <h2> Project </h2>
+
       
 
     </>
