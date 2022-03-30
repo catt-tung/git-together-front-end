@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AddGoal from "../../components/Goals/Goals";
-import * as goalService from '../../services/project'
+import * as projectService from '../../services/project'
+import { useNavigate } from 'react-router-dom';
 
 const AddProject = () => {
+	const navigate = useNavigate()
   const [goals, setGoals] = useState([])
 
   useEffect(() => {
-    goalService.getGoals()
+    projectService.getGoals()
     .then(goalsData => setGoals(goalsData))
   }, [])
 
@@ -28,9 +30,15 @@ const AddProject = () => {
 		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
 	}, [formData])
 
-  const handleSubmit = evt => {
-    evt.preventDefault()
+  const handleAddProject = async newProjectData => {
+    await projectService.createProject(newProjectData)
+    navigate('/myProjects')
   }
+
+	const handleSubmit = evt => {
+		evt.preventDefault()
+    handleAddProject(formData)
+	}
 
 
   return ( 
@@ -39,8 +47,7 @@ const AddProject = () => {
       <h1>Create a New Project</h1>
       <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
-					<label htmlFor="repo-input" className="form-control"
-          >
+					<label htmlFor="repo-input" className="form-label">
             Select a repository:
 					</label>
 					<input 
@@ -60,8 +67,8 @@ const AddProject = () => {
 					<input 
 						type="text"
 						className="form-control"
-						id="age-input"
-						name="age"
+						id="image-input"
+						name="image"
             value={formData.image}
             onChange={handleChange}
 					/>
