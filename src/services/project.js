@@ -77,6 +77,10 @@ function update(project) {
   .then(res => res.json())
 }
 
+function getProjectDetails(id) {
+  return fetch(`${BASE_URL}/${id}`)
+  .then(res => res.json())
+}
 
 export {
   getRepos,
@@ -84,5 +88,6 @@ export {
   getGoals,
   createProject,
   update,
-  getAvatar
+  getAvatar,
+  getProjectDetails,
 }
