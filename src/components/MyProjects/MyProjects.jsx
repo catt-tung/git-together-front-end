@@ -9,7 +9,7 @@ const [projects, setProjects] = useState([])
 
 useEffect(() => {
   projectService.getRepos()
-  .then(repoData => setRepoList(repoData))
+  .then(repolist => setRepoList(repoList))
 }, [])
 
 useEffect(() => {
@@ -21,11 +21,16 @@ useEffect(() => {
 console.log(projects)
   return ( 
     <>
-
+    
       <h1>List of created projects</h1>
       {projects.map(project => (
         <div>
-          <p>{project.repo}</p>
+          <Link
+          to='/project'
+          state = {{project}}>
+          {project.repo}
+          </Link>
+
             <Link
               to='/editProject'
               state={{project}}
@@ -33,9 +38,17 @@ console.log(projects)
               <button>
                 Edit Project
               </button>
-              </Link>
+            </Link>
+
         </div>
-      ))}
+        ))}
+        
+            <Link
+              to='/myProjects/new'
+              state = {{repoList}}
+            >
+              +Create Project
+            </Link>
     </>
   );
 }

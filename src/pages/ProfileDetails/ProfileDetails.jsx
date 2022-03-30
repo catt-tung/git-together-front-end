@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDetails } from '../../services/profileService';
 import { useLocation } from 'react-router-dom';
-import { getRepos } from '../../services/project';
+
 
 const ProfileDetails = () => {
 
@@ -14,7 +14,6 @@ const ProfileDetails = () => {
   }, [])
 
 
-  
 
   return ( 
     <>

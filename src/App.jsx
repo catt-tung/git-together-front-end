@@ -75,7 +75,7 @@ const App = () => {
           />
           //for now I am adding a route so I can test functionality; later on the repos need to be linking to this//
           <Route
-            path="/myProjects/sampleRepo"
+            path="/project"
             element={user ? <MyProjectDetails /> : <Navigate to="/login" />} 
           />
           <Route
