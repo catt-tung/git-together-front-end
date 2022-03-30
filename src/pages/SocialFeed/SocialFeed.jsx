@@ -20,9 +20,12 @@ const SocialFeed = (props) => {
     .then(deletedPost => setPosts(posts.filter(post => post._id !== deletedPost._id)))
   }
 
-  const handleDeleteComment = (postId, commentId) => {
-    postService.deleteOneComment(postId, commentId)
-    // .then(deletedComment => setPosts(posts.comments.filter(comment => comment._id !== deletedComment._id)))
+  const handleDeleteComment = async (postId, commentId) => {
+    await postService.deleteOneComment(postId, commentId)
+    const updatedPost = posts.filter(post => post._id === postId)
+    const updatedComments = updatedPost[0].comments.filter(comment => comment._id !== commentId)
+    updatedPost.comments = updatedComments
+    setPosts([updatedPost])
   }
 
   return ( 
@@ -72,7 +75,7 @@ const SocialFeed = (props) => {
                         <p key={comment._id}>
                           <h6>"{comment.content}"</h6> - {comment.author}
                         </p>
-                        <button onClick={() => handleDeleteComment(post._id, comment._id)}>X</button>
+                        <button onClick={async () => await handleDeleteComment(post._id, comment._id)}>X</button>
                       </>
                   )}
                 </>
