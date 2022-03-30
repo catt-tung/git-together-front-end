@@ -12,12 +12,21 @@ const MyProjectDetails = (props) => {
   //   projectService.getProjectDetails(location.state.project._id)
   //   .then(projectData => setProject(projectData))
   // }, [])
+  // console.log(location.state.project.goals)
+  // const goalsNames = Object.entries(location.state.project.goals)
+  // console.log(goalsNames)
+
 
   return ( 
     <>
-      <h1>Project Details Component</h1>
-      <h3>{location.state.project.repo}</h3>
+      <h1>{location.state.project.repo}</h1>
+      <h3>Current Project Status</h3>
+      <h5>Repostory name: {location.state.project.repo}</h5>
       <h5>Projected Completion Date: {new Date(location.state.project.completionDate).toLocaleDateString()}</h5>
+      <h5>Project Management List</h5>
+      {location.state.project.goals.map(goal => 
+        <p>{goal.goal}</p>
+        )}
       <AddGoal projectid={location.state.project._id} />
     </>
   );
