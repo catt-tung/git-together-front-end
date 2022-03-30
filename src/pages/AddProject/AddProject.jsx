@@ -10,13 +10,20 @@ const AddProject = () => {
     .then(goalsData => setGoals(goalsData))
   }, [])
 
+  const [formData, setFormData] = useState({
+    repo: '',
+    photo: '',
+    completionDate: '',
+  })
+
   return ( 
     <>
       <h1>Page to Add New Projects</h1>
       <h1>Create a New Project</h1>
       <form autoComplete="off">
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-label">
+					<label htmlFor="name-input" className="form-control"
+          >
 						Select a repository:
 					</label>
 					<input 
@@ -24,11 +31,12 @@ const AddProject = () => {
 						className="form-control"
 						id="repo-input"
 						name="repo"
+            value={formData.repo}
 						required
 					/>
 				</div>
         <div className="form-group mb-4">
-					<label htmlFor="age-input" className="form-label">
+					<label htmlFor="photo-input" className="form-label">
 						Upload a photo
 					</label>
 					<input 
@@ -36,6 +44,7 @@ const AddProject = () => {
 						className="form-control"
 						id="age-input"
 						name="age"
+            value={formData.image}
 					/>
 				</div>
 				<div className="form-group mb-3">
@@ -47,6 +56,7 @@ const AddProject = () => {
 						className="form-control"
 						id="date-input"
 						name="completionDate"
+            value={formData.completionDate}
 						required
 					/>
 				</div>
