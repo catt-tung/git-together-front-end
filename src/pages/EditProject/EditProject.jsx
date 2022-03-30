@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as projectService from '../../services/project'
 
@@ -8,15 +8,10 @@ const EditProject = (props) => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState(location.state.project)
-  const [validForm, setValidForm] = useState(true)
 
   const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
-
-  useEffect(() => {
-    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
-  }, [formData])
 
   const handleEditProject = async newProjectData => {
     await projectService.update(newProjectData)
@@ -77,7 +72,7 @@ const EditProject = (props) => {
 					<button
 						type="submit"
 						className="btn btn-primary btn-fluid"
-            disabled={!validForm}
+            // disabled={!validForm}
 					>
 						Save Project
 					</button>
