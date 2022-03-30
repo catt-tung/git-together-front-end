@@ -24,7 +24,10 @@ async function getRepos(gitUser) {
 function create(goal) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'content-type': 'application/json'},
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
     body: JSON.stringify(goal)
   })
   .then(res => res.json())
@@ -42,10 +45,25 @@ function getGoals() {
 function createProject(project) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'content-type': 'application/json'},
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
     body: JSON.stringify(project)
   })
 	.then(res => res.json())
+}
+
+function update(project) {
+  return fetch(`${BASE_URL}/${project._id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(project)
+  })
+  .then(res => res.json())
 }
 
 
@@ -54,4 +72,5 @@ export {
   create,
   getGoals,
   createProject,
+  update,
 }

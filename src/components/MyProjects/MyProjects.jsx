@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import * as projectService from "../../services/project";
+import { Link } from "react-router-dom";
 
 
 const MyProjects = () => {
@@ -32,7 +33,17 @@ console.log(projects)
       </ul>
       <h1>List of created projects</h1>
       {projects.map(project => (
-        <p>{project.repo}</p>
+        <div>
+          <p>{project.repo}</p>
+            <Link
+              to='/editProject'
+              state={{project}}
+            >
+              <button>
+                Edit Project
+              </button>
+              </Link>
+        </div>
       ))}
     </>
   );
