@@ -54,10 +54,23 @@ function createProject(project) {
 	.then(res => res.json())
 }
 
+function update(project) {
+  return fetch(`${BASE_URL}/${project._id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(project)
+  })
+  .then(res => res.json())
+}
+
 
 export {
   getRepos,
   create,
   getGoals,
   createProject,
+  update,
 }

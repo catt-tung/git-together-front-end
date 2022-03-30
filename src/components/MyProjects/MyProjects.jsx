@@ -32,7 +32,12 @@ console.log(projects)
       </ul>
       <h1>List of created projects</h1>
       {projects.map(project => (
-        <p>{project.repo}</p>
+        <div>
+          <p>{project.repo}</p>
+              <button>
+                Edit Project
+              </button>
+        </div>
       ))}
     </>
   );
