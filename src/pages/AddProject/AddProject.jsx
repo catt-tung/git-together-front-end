@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AddProject = () => {
 	const navigate = useNavigate()
-  const [goals, setGoals] = useState([])
+  const [goals, setGoals] = useState([]) 
 
   useEffect(() => {
     projectService.getGoals()
