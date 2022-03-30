@@ -20,7 +20,7 @@ const AddGoal = (props) => {
   }, [formData])
 
   const handleAddGoal = async newGoalData => {
-    await projectService.create(newGoalData)
+    await projectService.create(newGoalData, props.projectid)
   }
 
   const handleSubmit = evt => {
