@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import * as projectService from "../../services/project";
+import { Link } from "react-router-dom";
 
 
 const MyProjects = () => {
@@ -34,9 +35,14 @@ console.log(projects)
       {projects.map(project => (
         <div>
           <p>{project.repo}</p>
+            <Link
+              to='/editProject'
+              state={{project}}
+            >
               <button>
                 Edit Project
               </button>
+              </Link>
         </div>
       ))}
     </>

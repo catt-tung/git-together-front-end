@@ -20,7 +20,7 @@ const EditProject = (props) => {
 
   const handleEditProject = async newProjectData => {
     await projectService.update(newProjectData)
-    navigate('/:id') //need to check this to go to navigate back to project details page
+    navigate('/myProjects')
   }
 
   const handleSubmit = evt => {
@@ -79,7 +79,7 @@ const EditProject = (props) => {
 						className="btn btn-primary btn-fluid"
             disabled={!validForm}
 					>
-						Create Project
+						Save Project
 					</button>
 				</div>
 			</form>
