@@ -32,8 +32,8 @@ async function getAvatar(gitUser) {
   return avatar
 }
 
-function create(goal) {
-  return fetch(BASE_URL, {
+function create(goal, projectid) {
+  return fetch(`${BASE_URL}/${projectid}`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
