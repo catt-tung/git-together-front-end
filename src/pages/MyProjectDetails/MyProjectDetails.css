@@ -1,4 +1,15 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 img {
   width: 500px;
   height: auto;
 }
+
+.project-container {
+  margin: 20px;
+  padding: 30px;
+}
+

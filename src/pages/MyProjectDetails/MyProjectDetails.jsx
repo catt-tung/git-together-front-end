@@ -40,17 +40,22 @@ const MyProjectDetails = (props) => {
       <h1>{project.name}</h1>
       <img src={project.image}></img>
       <h2>{project.repo}</h2>
-      <h3>Current Project Status</h3>
-      <h5>Repostory name: {project.repo}</h5>
-      <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
-      <h5>Project Management List</h5>
-      <ul>
-      {goals.map(goal => 
-        <li key={goal._id}><input type="checkbox"></input>{goal.goal}{new Date(goal.date).toLocaleDateString()
-        
-        }<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
-        )}
-      </ul>
+      <div className="project-container" id="current-project-status">
+        <h3>Current Project Status</h3>
+        <h5>Repostory name: {project.repo}</h5>
+        <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
+      </div>
+      <div className='project-container' id='project-management-list'>
+        <h3>Project Management List</h3>
+        <ul>
+        {goals.map(goal => 
+          <li key={goal._id}><input type="checkbox"></input>{goal.goal}{new Date(goal.date).toLocaleDateString()
+          
+          }<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
+          )}
+        </ul>
+      </div>
+      
       <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
 
     </>
