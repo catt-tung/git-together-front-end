@@ -48,10 +48,24 @@ const MyProjectDetails = (props) => {
       <div className='project-container' id='project-management-list'>
         <h3>Project Management List</h3>
         <>
+          <tr>
+            <th>
+              Done?
+            </th>
+            <th>
+              Goal
+            </th>
+            <th>
+              Complete by
+            </th>
+            <th>
+              Remove
+            </th>
+          </tr>
           {goals.map(goal => 
             <>
               <tr>
-                <td>
+                <td className='table-checkbox'>
                   <input type="checkbox"></input>
                 </td>
                 <td>
@@ -68,7 +82,7 @@ const MyProjectDetails = (props) => {
             )}
         </>
       </div>
-      <div className='project-container'>
+      <div className='project-container' id='add-goal'>
         <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
       </div>
     </>
