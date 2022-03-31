@@ -37,6 +37,7 @@ const MyProjectDetails = (props) => {
   return ( 
     <>
       <h1>{project.name}</h1>
+      <img src={project.image}></img>
       <h2>{project.repo}</h2>
       <h3>Current Project Status</h3>
       <h5>Repostory name: {project.repo}</h5>
@@ -44,7 +45,7 @@ const MyProjectDetails = (props) => {
       <h5>Project Management List</h5>
       <ul>
       {goals.map(goal => 
-        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()
+        <li key={goal._id}><input type="checkbox"></input>{goal.goal}{new Date(goal.date).toLocaleDateString()
         
         }<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
         )}

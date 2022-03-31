@@ -16,12 +16,14 @@ const ProfileDetails = () => {
       .then(projects => {
         setProjects(projects.filter(project => project.owner === profileDetails._id))
       })
-    }, [])
+    }, [location.state.profile._id, profileDetails._id])
     
     const avatar = `https://github.com/${profileDetails.gitUser}.png`
     
 
-
+    userProjects.map(project => 
+      console.log(project.name)
+    )
 
   return ( 
     <>
@@ -31,20 +33,18 @@ const ProfileDetails = () => {
         </h3>
 
       <h2> Projects </h2>
-      <ul>
+     
 
-      {userProjects.map(project => {
-        <>
-        <li>
+      {userProjects.map(project => 
+        
           <Link
           to='/project'
         state = {{project}}>
-          {project.repo}
+          {project.name}
           </Link>   
-        </li>
-        </>
-        })}
-        </ul>
+        
+        )}
+        
     </>
   );
 }
