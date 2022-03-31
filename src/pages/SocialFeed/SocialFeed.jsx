@@ -15,27 +15,25 @@ const SocialFeed = (props) => {
     .then(postsData => setPosts(postsData))
   }, [])
 
+  console.log(posts)
+
   const handleDeletePost = id => {
     postService.deleteOne(id)
     .then(deletedPost => setPosts(posts.filter(post => post._id !== deletedPost._id)))
   }
 
   const handleDeleteComment = async (postId, commentId) => {
-    // delete comment
-    await postService.deleteOneComment(postId, commentId)
-    
-    // adjust comments state to reflect deletion
-    const updatedPost = posts.filter(post => post._id === postId)
-    const updatedComments = updatedPost[0].comments.filter(comment => comment._id !== commentId)
-    updatedPost.comments = updatedComments
-    setPosts([updatedPost])
+    // sends delete req to back end
+    const updatedPost = await postService.deleteOneComment(postId, commentId)
+    // sets state for addition of post's comment
+    setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
   }
 
   const handleAddComment = async (id, newCommentData) => {
-    console.log(id, newCommentData)
+    // sends post req to back end
     const updatedPost = await postService.createComment(id, newCommentData)
+    // sets state for addition of post's comment
     setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
-
   }
 
   return ( 
@@ -53,7 +51,7 @@ const SocialFeed = (props) => {
         <>
           <div key={post._id} className='post-container'>
             <h5>{post.content}</h5>
-            <h5>By: {post.author.name}</h5>
+            <h5>Posted by: {post.author.gitUser}</h5>
             <AddComment post={post} handleAddComment={handleAddComment}/>
 
             <button onClick={() => handleDeletePost(post._id)}>Delete</button>
@@ -77,13 +75,17 @@ const SocialFeed = (props) => {
                 {isExpanded ? 'Collapse' : 'All Comments'}
               </button>
                 
-              <section {...getCollapseProps()}>
+              <section className='comments-container' {...getCollapseProps()}>
                 <>
                   <h5>All Comments:</h5>
                     {post.comments.map(comment => 
                       <>
+                      {console.log(comment)}
                         <p key={comment._id}>
-                          <h6>"{comment.content}"</h6> - {comment.author.name}
+                          <h6>"{comment.content}"</h6>
+                          {comment.author.gitUser}
+                          <br></br>
+                          {new Date(comment.createdAt).toLocaleDateString()}
                         </p>
                         <button onClick={async () => await handleDeleteComment(post._id, comment._id)}>X</button>
                       </>
