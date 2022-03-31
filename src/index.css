@@ -28,7 +28,6 @@ a:hover {
   color: var(--purple);
   font-weight: 600;
   background-color: var(--font);
-  transform: scale(1.1);
 }
 
 a.active {
