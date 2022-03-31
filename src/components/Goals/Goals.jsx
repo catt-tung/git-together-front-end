@@ -30,6 +30,7 @@ const AddGoal = (props) => {
   return ( 
     <>
       <h5>Add a goal/milestone to this project:</h5>
+      <div className='goals-form'>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
           <div className="form-group mb-3">
             <label htmlFor="goal-input" className="form-label">
@@ -73,13 +74,13 @@ const AddGoal = (props) => {
           <div className="d-grid">
             <button
               type="submit"
-              className="btn btn-primary btn-fluid"
               disabled={!validForm}
             >
               Add Goal
             </button>
           </div>
         </form>
+      </div>
     </>
   );
 }
