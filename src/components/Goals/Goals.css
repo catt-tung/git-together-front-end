@@ -1,5 +1,16 @@
 form {
+  padding: 10px 10px 0px 10px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
+}
+
+#complete-input {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  display: flex;
+  align-self: center;
 }
