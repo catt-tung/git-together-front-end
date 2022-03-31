@@ -117,6 +117,14 @@ function deleteOne(id) {
   .then(res => res.json())
 }
 
+function calcProgress(goals) {
+  const total = goals.length
+  const complete = goals.filter(goal =>
+    goal.complete === true )
+
+  return complete.length / total * 100
+}
+
 export {
   getRepos,
   create,
@@ -128,5 +136,6 @@ export {
   deleteGoal,
   getProjects,
   deleteOne,
-  updateGoal
+  updateGoal,
+  calcProgress
 }
