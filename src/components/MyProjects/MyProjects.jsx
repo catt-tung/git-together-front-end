@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from "react";
-import * as projectService from "../../services/project";
 import { Link } from "react-router-dom";
+import { getRepos, getGoals } from "../../services/project";
+
 
 
 const MyProjects = () => {
 const [repoList, setRepoList] = useState([])
 const [projects, setProjects] = useState([])
 
-useEffect(() => {
-  projectService.getRepos()
-  .then(repolist => setRepoList(repoList))
-}, [])
+// useEffect(() => {
+//   getRepos()
+//   .then(repoList => setRepoList(repoList))
+// }, [])
 
 useEffect(() => {
-  projectService.getGoals()
+  getGoals()
   .then(projectData => setProjects(projectData))
 }, [])
 
