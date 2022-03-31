@@ -42,11 +42,11 @@ const MyProjectDetails = (props) => {
       <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
       <h5>Project Management List</h5>
       <ul>
-      {location.state.project.goals.map(goal => 
-        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}<button onClick={() => handleDeleteGoal(location.state.project._id, goal._id)}>delete</button></li>
+      {goals.map(goal => 
+        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
         )}
       </ul>
-      <AddGoal projectid={location.state.project._id} />
+      <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
 
     </>
   );
