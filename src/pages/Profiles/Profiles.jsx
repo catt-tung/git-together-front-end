@@ -19,7 +19,7 @@ const Profiles = ({user}) => {
       <h1>Hello. This is a list of all the profiles.</h1>
       {profiles.length ? 
         <>
-          {profiles.map(profile=>
+          {profiles.map(profile =>
           profile._id === userProfile._id ?
           
           <div key={profile._id}>

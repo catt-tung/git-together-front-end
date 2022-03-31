@@ -36,7 +36,7 @@ const handleDeleteProject = id => {
           to='/project'
           state = {{project}}
           >
-          {project.repo}
+          {project.name}
           </Link>
 
             <Link
