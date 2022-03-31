@@ -30,22 +30,23 @@ const MyProjectDetails = (props) => {
     const newGoals = await projectService.deleteGoal(projectId, goalId)
 
     setGoals(goals.filter(goal => goal._id !== goalId))
-
   }
 
 
   return ( 
     <>
       <h1>{project.repo}</h1>
+      <img src={project.image}></img>
       <h3>Current Project Status</h3>
       <h5>Repostory name: {project.repo}</h5>
       <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
       <h5>Project Management List</h5>
       <ul>
       {goals.map(goal => 
-        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()
-        
-        }<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
+        <li key={goal._id}>
+          {goal.goal}
+          {new Date(goal.date).toLocaleDateString()}
+          <button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
         )}
       </ul>
       <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
