@@ -50,40 +50,42 @@ const MyProjectDetails = (props) => {
       </div>
       <div className='project-container' id='project-management-list'>
         <h3>Project Management List</h3>
-        <>
-          <tr>
-            <th>
-              Done?
-            </th>
-            <th>
-              Goal
-            </th>
-            <th>
-              Complete by
-            </th>
-            <th>
-              Remove
-            </th>
-          </tr>
-          {goals.map(goal => 
-            <>
-              <tr>
-                <td className='align-center'>
-                  <input type="checkbox" onClick={() => handleUpdateComplete(goal._id, project._id)}></input>
-                </td>
-                <td>
-                  {goal.goal}
-                </td>
-                <td>
-                  {new Date(goal.date).toLocaleDateString()}
-                </td>
-                <td className='align-center'>
-                  <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
-                </td>
-              </tr>
-            </>
-            )}
-        </>
+        <div id='goals-table'>
+          <>
+            <tr>
+              <th>
+                Done?
+              </th>
+              <th>
+                Goal
+              </th>
+              <th>
+                Complete by
+              </th>
+              <th>
+                Remove
+              </th>
+            </tr>
+            {goals.map(goal => 
+              <>
+                <tr>
+                  <td className='align-center'>
+                    <input type="checkbox" onClick={() => handleUpdateComplete(goal._id, project._id)}></input>
+                  </td>
+                  <td>
+                    {goal.goal}
+                  </td>
+                  <td>
+                    {new Date(goal.date).toLocaleDateString()}
+                  </td>
+                  <td className='align-center'>
+                    <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
+                  </td>
+                </tr>
+              </>
+              )}
+          </>
+        </div>
       </div>
       <div className='project-container' id='add-goal'>
         <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
