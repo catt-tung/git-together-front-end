@@ -17,12 +17,17 @@ const MyProjectDetails = (props) => {
   
   useEffect(() => {
     getProjectDetails(location.state.project._id)
-    .then(project => setProject(project))
-    getProjectDetails(location.state.project._id)
-    .then(project=> setGoals(project.goals))
-    setProgress(calcProgress(goals))
-  }, [goals, location.state.project._id])
+    .then(project => {
+      setProject(project)
+      setGoals(project.goals)
+    })
+    console.log(project)
+  }, [])
   
+  useEffect(() => {
+    setProgress(calcProgress(goals))
+  }, [goals])
+
   const handleAddGoal = async newGoalData => {
     const updatedProject = await projectService.create(newGoalData, project._id)
     goals.push(newGoalData)
@@ -38,9 +43,7 @@ const MyProjectDetails = (props) => {
     const updatedProject = await projectService.updateGoal(goalId, projectId)
     setGoals(updatedProject.goals)
     setProject(updatedProject)
-
   }
-  
   
   return ( 
     <>
@@ -51,55 +54,10 @@ const MyProjectDetails = (props) => {
         <h3>Current Project Status</h3>
         <h5>Repostory name: {project.repo}</h5>
         <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
-      </div>
-      <div>
       <ProgressBar animated now={progress} />
-</div>
+      </div>
       <div className='project-container' id='project-management-list'>
         <h3>Project Management List</h3>
-
-        <div id='goals-table'>
-          <>
-            <tr>
-              <th>
-                Done?
-              </th>
-              <th>
-                Goal
-              </th>
-              <th>
-                Complete by
-              </th>
-              <th>
-                Remove
-              </th>
-            </tr>
-            {goals.map(goal => 
-              <>
-                <tr>
-                  <td className='align-center'>
-                    <input type="checkbox" onClick={() => handleUpdateComplete(goal._id, project._id)}></input>
-                  </td>
-                  <td>
-                    {goal.goal}
-                  </td>
-                  <td>
-                    {new Date(goal.date).toLocaleDateString()}
-                  </td>
-                  <td className='align-center'>
-                  <input 
-                  type="checkbox" 
-                    onClick={() => handleUpdateComplete(goal._id, project._id)}
-                    defaultChecked={goal.complete}
-                  >
-                  </input>
-                  </td>
-                </tr>
-              </>
-              )}
-          </>
-        </div>
-
         <>
           <tr>
             <th>
@@ -118,7 +76,6 @@ const MyProjectDetails = (props) => {
           {goals.map(goal => 
             <>
               <tr>
-
                 <td className='align-center'>
                   <input 
                   type="checkbox" 
@@ -126,10 +83,6 @@ const MyProjectDetails = (props) => {
                     defaultChecked={goal.complete}
                   >
                   </input>
-
-                
-
-
                 </td>
                 <td>
                   {goal.goal}
@@ -144,7 +97,6 @@ const MyProjectDetails = (props) => {
             </>
             )}
         </>
->
       </div>
       <div className='project-container' id='add-goal'>
         <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
