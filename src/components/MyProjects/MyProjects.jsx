@@ -1,30 +1,32 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
+import { getDetails } from "../../services/profileService";
 import { getRepos, getGoals } from "../../services/project";
 
 
 
-const MyProjects = () => {
+const MyProjects = ({ user }) => {
 const [repoList, setRepoList] = useState([])
 const [projects, setProjects] = useState([])
+const [profile, getProfile] = useState([])
 
-// useEffect(() => {
-//   getRepos()
-//   .then(repoList => setRepoList(repoList))
-// }, [])
+
 
 useEffect(() => {
+  getDetails(user.profile)
+  .then(profile => getProfile(profile))
   getGoals()
   .then(projectData => setProjects(projectData))
 }, [])
 
+console.log(profile)
 
-console.log(projects)
   return ( 
     <>
-    
+
       <h1>List of created projects</h1>
       {projects.map(project => (
+        project.owner === profile._id ?
         <div>
           <Link
           to='/project'
@@ -40,8 +42,11 @@ console.log(projects)
                 Edit Project
               </button>
             </Link>
-
         </div>
+        :
+        <>
+        
+        </>
         ))}
         
             <Link
