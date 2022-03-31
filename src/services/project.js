@@ -33,7 +33,7 @@ async function getAvatar(gitUser) {
 }
 
 function create(goal, projectid) {
-  return fetch(`${BASE_URL}/${projectid}`, {
+  return fetch(`${BASE_URL}/${projectid}/goals`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -82,8 +82,8 @@ function getProjectDetails(id) {
   .then(res => res.json())
 }
 
-function deleteGoal(project, goalid){
-  return fetch (`${BASE_URL}/${project._id}/goals/${goalid}`, {
+function deleteGoal(project, goal){
+  return fetch (`${BASE_URL}/${project}/goals/${goal}`, {
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
