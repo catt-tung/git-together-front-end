@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as projectService from '../../services/project'
+import './Goals.css'
 
 const AddGoal = (props) => {
     const [validForm, setValidForm] = useState(false)
