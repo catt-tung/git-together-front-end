@@ -3,6 +3,7 @@ import AddGoal from "../../components/Goals/Goals";
 import { getProjectDetails } from '../../services/project';
 import { useLocation } from "react-router-dom";
 import * as projectService from '../../services/project'
+import styles from './MyProjectDetails.css'
 
 const MyProjectDetails = (props) => {
   const location = useLocation()
