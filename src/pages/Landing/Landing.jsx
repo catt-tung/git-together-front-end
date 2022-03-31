@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getDetails } from '../../services/profileService';
 import styles from './Landing.module.css'
 
