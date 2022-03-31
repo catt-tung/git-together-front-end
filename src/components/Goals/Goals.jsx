@@ -19,13 +19,11 @@ const AddGoal = (props) => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
-  const handleAddGoal = async newGoalData => {
-    await projectService.create(newGoalData, props.projectid)
-  }
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    handleAddGoal(formData)
+    props.handleAddGoal(formData)
+    
   }
 
   return ( 

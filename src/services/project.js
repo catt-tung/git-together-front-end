@@ -27,7 +27,7 @@ async function getAvatar(gitUser) {
     username: gitUser
   })
 
-  const avatar = response.avatar_url
+  const avatar = response.data.avatar_url
 
   return avatar
 }
