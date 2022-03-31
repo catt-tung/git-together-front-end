@@ -82,6 +82,16 @@ function getProjectDetails(id) {
   .then(res => res.json())
 }
 
+function deleteGoal(project, goalid){
+  return fetch (`${BASE_URL}/${project._id}/goals/${goalid}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 export {
   getRepos,
   create,
@@ -90,4 +100,5 @@ export {
   update,
   getAvatar,
   getProjectDetails,
+  deleteGoal,
 }

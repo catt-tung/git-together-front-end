@@ -29,7 +29,6 @@ const MyProjectDetails = (props) => {
         <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}<button>delete</button></li>
         )}
       </ul>
-      
       <AddGoal projectid={location.state.project._id} />
     </>
   );
