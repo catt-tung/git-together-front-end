@@ -7,31 +7,34 @@ import * as projectService from '../../services/project'
 const MyProjectDetails = (props) => {
   const location = useLocation()
 
-  const handleDeleteGoal = (projectid, goalid) => {
-    projectService.deleteGoal(projectid, goalid)
-  }
-
+  
   const [goals, setGoals] = useState([])
-  const [project, getProject] = useState([])
-
+  const [project, setProject] = useState([])
+  
   
   useEffect(() => {
-  getProjectDetails(location.state.project._id)
-    .then(project => getProject(project))
+    getProjectDetails(location.state.project._id)
+    .then(project => setProject(project))
   }, [])
-
+  
   useEffect(() => {
     getProjectDetails(location.state.project._id)
     .then(project=> setGoals(project.goals))
   }, [])
-
+  
   const handleAddGoal = async newGoalData => {
     const updatedProject = await projectService.create(newGoalData, project._id)
-      getProject(updatedProject)
-
-      console.log(updatedProject)
+    goals.push(newGoalData)
+    setProject(updatedProject)
   }
+  
+  const handleDeleteGoal = async (projectId, goalId) => {
+    const newGoals = await projectService.deleteGoal(projectId, goalId)
 
+    setGoals(goals.filter(goal => goal._id !== goalId))
+
+
+  }
 
 
   return ( 
@@ -43,7 +46,9 @@ const MyProjectDetails = (props) => {
       <h5>Project Management List</h5>
       <ul>
       {goals.map(goal => 
-        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
+        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()
+        
+        }<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
         )}
       </ul>
       <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>

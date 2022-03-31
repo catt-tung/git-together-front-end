@@ -23,7 +23,7 @@ const AddGoal = (props) => {
   const handleSubmit = evt => {
     evt.preventDefault()
     props.handleAddGoal(formData)
-    
+    setFormData({goal: ''})
   }
 
   return ( 
