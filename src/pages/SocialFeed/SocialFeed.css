@@ -1,0 +1,86 @@
+button {
+  background-color: var(--purple);
+  color: white;
+  font-weight: 600;
+  font-size:1.2rem
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.add-post {
+  margin-top: -10px;
+}
+
+.add-post:hover {
+  background-color: var(--background);
+}
+
+.add-post-btn{
+  font-size: 1.5rem;
+}
+
+.edit-post {
+  padding: 0;
+}
+
+.post-body {
+  font-weight: 600;
+  margin: 10px auto;
+  font-size: 2rem;
+}
+
+.post-container {
+  text-align: center;
+  word-wrap: break-word;
+  height: auto;
+  width: 80vw;
+  max-width: 1000px;
+  background-color: lightgray;
+  color: black;
+  margin: 10px 0;
+  padding: 10px 30px;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.comment {
+  background-color: white;
+  border: 2px solid black;
+  background-color: rgb(144, 144, 144);
+  margin: 5px auto;
+  height: auto;
+}
+
+.comment-body {
+  font-weight: 600;
+  margin: 15px 10px 10px 10px;
+  word-wrap: break-word;
+  font-size: 1.5rem;
+}
+
+.comment-form{ 
+  margin: 10px auto;
+}
+
+.comments-container {
+  margin-top: 1vmin;
+  height: auto;
+}
+
+.comment-details {
+  font-style: italic;
+  margin-bottom: -10px;
+}
+
+.delete-comment {
+  display: inline-block;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+#comment-input {
+  width: 50vw;
+  max-width: 800px;
+}

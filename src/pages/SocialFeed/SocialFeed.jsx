@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import * as postService from '../../services/posts';
 import AddComment from '../../components/AddComment/AddComment';
 import useCollapse from 'react-collapsed'
+import './SocialFeed.css'
 
 const SocialFeed = (props) => {
   const [posts, setPosts] = useState([])
@@ -37,18 +38,29 @@ const SocialFeed = (props) => {
   return ( 
     <>
       <h1>Social Feed</h1>
+
       <Link 
-        to="/addSocialPost" 
+        to="/addSocialPost"
+        className='add-post'
       >
-        <button>
+        <button className='add-post-btn'>
           Add Post
         </button>
       </Link>
 
+      {/* Toggle on/off collapsed comments */}
+      <button
+        {...getToggleProps({
+          onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+        })}
+      >
+        {isExpanded ? 'Collapse' : 'All Comments'}
+      </button>
+
       {posts.map((post) => (
         <>
           <div key={post._id} className='post-container'>
-            <h5>{post.content}</h5>
+            <h4 className='post-body'>{post.content}</h4>
             <h5>Posted by: {post.author.gitUser}</h5>
             <AddComment post={post} handleAddComment={handleAddComment}/>
 
@@ -61,6 +73,7 @@ const SocialFeed = (props) => {
                 <Link
                   to='/editSocialPost'
                   state={{post}}
+                  className="edit-post"
                 >
                   <button>
                     Edit
@@ -74,29 +87,23 @@ const SocialFeed = (props) => {
 
             {/* Post's comments section */}
             <div>
-              <button
-                {...getToggleProps({
-                  onClick: () => setExpanded((prevExpanded) => !prevExpanded),
-                })}
-              >
-                {isExpanded ? 'Collapse' : 'All Comments'}
-              </button>
                 
               <section className='comments-container' {...getCollapseProps()}>
                 <>
                   <h5>All Comments:</h5>
                     {post.comments.map(comment => 
-                      <>
+                      <div className='comment'>
                         <p key={comment._id}>
-                          <h6>"{comment.content}"</h6>
+                          <h6 className='comment-body'>{comment.content}</h6>
+                          <div className='comment-details'>
                           {comment.author.gitUser}
                           <br></br>
                           {new Date(comment.createdAt).toLocaleDateString()}
+                          </div>
                         </p>
-                        
                         {comment.author._id === props.user.profile ?
                           <>
-                            <button onClick={async () => await handleDeleteComment(post._id, comment._id)}>
+                            <button className='delete-comment' onClick={async () => await handleDeleteComment(post._id, comment._id)}>
                               X
                             </button>
                           </>
@@ -104,7 +111,7 @@ const SocialFeed = (props) => {
                           <>
                           </>
                         }
-                    </>
+                    </div>
                   )}
                 </>
               </section>
