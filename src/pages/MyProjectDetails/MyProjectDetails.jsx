@@ -47,17 +47,30 @@ const MyProjectDetails = (props) => {
       </div>
       <div className='project-container' id='project-management-list'>
         <h3>Project Management List</h3>
-        <ul>
-        {goals.map(goal => 
-          <li key={goal._id}><input type="checkbox"></input>{goal.goal}{new Date(goal.date).toLocaleDateString()
-          
-          }<button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button></li>
-          )}
-        </ul>
+        <>
+          {goals.map(goal => 
+            <>
+              <tr>
+                <td>
+                  <input type="checkbox"></input>
+                </td>
+                <td>
+                  {goal.goal}
+                </td>
+                <td>
+                  {new Date(goal.date).toLocaleDateString()}
+                </td>
+                <td>
+                  <button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button>
+                </td>
+              </tr>
+            </>
+            )}
+        </>
       </div>
-      
-      <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
-
+      <div className='project-container'>
+        <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
+      </div>
     </>
   );
 }
