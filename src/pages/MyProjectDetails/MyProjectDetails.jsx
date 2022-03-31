@@ -6,8 +6,6 @@ import * as projectService from '../../services/project'
 
 const MyProjectDetails = (props) => {
   const location = useLocation()
-
-  
   const [goals, setGoals] = useState([])
   const [project, setProject] = useState([])
   

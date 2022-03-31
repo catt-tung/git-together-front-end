@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getDetails } from "../../services/profileService";
-import { getRepos, getGoals } from "../../services/project";
+import { getRepos, getGoals, deleteOne, getProjectDetails } from "../../services/project";
 
 
 
@@ -20,12 +20,14 @@ useEffect(() => {
 console.log(profile)
 
 const handleDeleteProject = id => {
-  setProjects(projects.filter(project => project._id !== id))
+  deleteOne(id)
+  .then(deletedProject => {
+    setProjects(projects.filter(project => project._id !== deletedProject._id))})
 }
+
 
   return ( 
     <>
-
       <h1>List of created projects</h1>
       {projects.map(project => (
         project.owner === profile._id ?
