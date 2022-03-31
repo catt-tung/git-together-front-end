@@ -21,11 +21,13 @@
   background-color: var(--background);
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   align-items: center;
 }
 
 .App main h1 {
   color: var(--font);
-  margin-bottom: 5vmin;
+  margin: 5vmin 0;
+  font-size: 80px;
+  font-weight: 600;
+  text-shadow: -2px 0 black, 0 3px black, 3px 0 black, 0 -2px var(--purple);
 }
