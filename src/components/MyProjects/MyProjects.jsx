@@ -10,8 +10,6 @@ const [repoList, setRepoList] = useState([])
 const [projects, setProjects] = useState([])
 const [profile, getProfile] = useState([])
 
-
-
 useEffect(() => {
   getDetails(user.profile)
   .then(profile => getProfile(profile))
@@ -42,6 +40,7 @@ console.log(profile)
                 Edit Project
               </button>
             </Link>
+            <button>Delete Project</button>
         </div>
         :
         <>

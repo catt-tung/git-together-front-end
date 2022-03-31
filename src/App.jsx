@@ -73,7 +73,6 @@ const App = () => {
             path="/editSocialPost"
             element={user ? <EditSocialPost /> : <Navigate to="/login" />} 
           />
-          //for now I am adding a route so I can test functionality; later on the repos need to be linking to this//
           <Route
             path="/project"
             element={user ? <MyProjectDetails /> : <Navigate to="/login" />} 

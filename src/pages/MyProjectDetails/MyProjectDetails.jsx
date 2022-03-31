@@ -33,7 +33,6 @@ const MyProjectDetails = (props) => {
 
     setGoals(goals.filter(goal => goal._id !== goalId))
 
-
   }
 
 
