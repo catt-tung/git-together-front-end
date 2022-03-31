@@ -2,27 +2,32 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: 7vmin auto;
+  color: var(--font);
+  font-family: "Roboto", sans-serif;
 }
 
 .App-header {
-  background-color: var(--black);
+  background-color: var(--purple);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2vmin;
   font-size: 2.5vmin;
-  color: var(--background);
+  color: var(--font);
+  box-shadow: inset 0.1em 0.1em 0.1em 0 rgba(255,255,255,0.5), inset -0.1em -0.1em 0.1em 0 rgba(0,0,0,0.5);
 }
 
 .App main {
   background-color: var(--background);
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   align-items: center;
 }
 
 .App main h1 {
-  color: var(--secondary-dark);
-  margin-bottom: 5vmin;
+  color: var(--font);
+  margin: 5vmin 0;
+  font-size: 80px;
+  font-weight: 600;
+  text-shadow: -2px 0 black, 0 3px black, 3px 0 black, 0 -2px var(--purple);
 }

@@ -5,14 +5,21 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {user ?
       <header className="App-header">
+      <div className='welcome'>
+        <Link to="/" className='welcome-link'>
+          <img className='logo-img' src='https://cdn-icons-png.flaticon.com/512/889/889192.png' alt="Cat icon"></img>
+        </Link>
+          Welcome, {user.name}
+      </div>
         <nav>
           <ul className='nav-bar'>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-            <li><Link to ="/socialFeed">Social Feed</Link></li>
+            <li className="logo">
+            </li>
             <li><Link to ="/myProjects">My Projects</Link></li>
+            <li><Link to ="/socialFeed">Social Feed</Link></li>
+            <li><Link to="/profiles">Profiles</Link></li>
+            <li><Link to="/changePassword">Change Password</Link></li>
+            <li><Link to="" onClick={handleLogout}>Log Out</Link></li>
           </ul>
         </nav>
         </header>
@@ -20,7 +27,7 @@ const NavBar = ({ user, handleLogout }) => {
       <header className="App-header">
         Please Log In!
         <nav>
-          <ul>
+          <ul className='nav-bar'>
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
           </ul>

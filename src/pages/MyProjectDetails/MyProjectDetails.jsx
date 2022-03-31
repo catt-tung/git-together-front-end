@@ -6,8 +6,6 @@ import * as projectService from '../../services/project'
 
 const MyProjectDetails = (props) => {
   const location = useLocation()
-
-  
   const [goals, setGoals] = useState([])
   const [project, setProject] = useState([])
   
@@ -32,7 +30,6 @@ const MyProjectDetails = (props) => {
     const newGoals = await projectService.deleteGoal(projectId, goalId)
 
     setGoals(goals.filter(goal => goal._id !== goalId))
-
 
   }
 

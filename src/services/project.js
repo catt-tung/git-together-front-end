@@ -97,6 +97,16 @@ function deleteGoal(project, goal){
   .then(res => res.json())
 }
 
+function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 export {
   getRepos,
   create,
@@ -106,5 +116,6 @@ export {
   getAvatar,
   getProjectDetails,
   deleteGoal,
-  getProjects
+  getProjects,
+  deleteOne,
 }
