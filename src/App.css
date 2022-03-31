@@ -3,7 +3,7 @@
   display: grid;
   grid-template-rows: 7vmin auto;
   color: var(--font);
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 .App-header {

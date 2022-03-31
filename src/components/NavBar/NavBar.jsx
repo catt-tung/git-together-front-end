@@ -5,10 +5,12 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {user ?
       <header className="App-header">
-                <Link to="/">
-                  <img className='logo-img' src='https://cdn-icons-png.flaticon.com/512/889/889192.png' alt="Cat icon"></img>
-                </Link>
-        <div>Welcome, {user.name}</div>
+      <div className='welcome'>
+        <Link to="/" className='welcome-link'>
+          <img className='logo-img' src='https://cdn-icons-png.flaticon.com/512/889/889192.png' alt="Cat icon"></img>
+        </Link>
+          Welcome, {user.name}
+      </div>
         <nav>
           <ul className='nav-bar'>
             <li className="logo">
