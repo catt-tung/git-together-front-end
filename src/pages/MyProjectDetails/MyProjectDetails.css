@@ -9,6 +9,7 @@ h2 {
 
 h3 {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 img {
@@ -54,6 +55,10 @@ td {
 
 .align-center {
   text-align: center;
+}
+
+.x-btn {
+  height: 2rem;
 }
 
 tr:nth-child(even) td {

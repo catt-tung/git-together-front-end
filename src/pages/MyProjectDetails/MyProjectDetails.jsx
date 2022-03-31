@@ -79,7 +79,7 @@ const MyProjectDetails = (props) => {
                     {new Date(goal.date).toLocaleDateString()}
                   </td>
                   <td className='align-center'>
-                    <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
+                    <button className='x-btn' onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
                   </td>
                 </tr>
               </>
