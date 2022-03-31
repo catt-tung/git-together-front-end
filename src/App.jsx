@@ -63,7 +63,7 @@ const App = () => {
           />
           <Route 
             path="/socialFeed" 
-            element={user ? <SocialFeed /> : <Navigate to="/login" />} 
+            element={user ? <SocialFeed user={user}/> : <Navigate to="/login" />} 
           />
           <Route
             path="/addSocialPost"
