@@ -82,6 +82,16 @@ function update(project) {
   .then(res => res.json())
 }
 
+function updateGoal(goal, project) {
+  return fetch(`${BASE_URL}/${project}/goals/${goal}`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+  .then(res => res.json())
+}
+
 function getProjectDetails(id) {
   return fetch(`${BASE_URL}/${id}`)
   .then(res => res.json())
@@ -118,4 +128,5 @@ export {
   deleteGoal,
   getProjects,
   deleteOne,
+  updateGoal
 }
