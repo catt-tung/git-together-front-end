@@ -2,16 +2,19 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: 7vmin auto;
+  color: var(--font);
+  font-family: "Roboto";
 }
 
 .App-header {
-  background-color: var(--black);
+  background-color: var(--purple);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2vmin;
   font-size: 2.5vmin;
-  color: var(--background);
+  color: var(--font);
+  box-shadow: inset 0.1em 0.1em 0.1em 0 rgba(255,255,255,0.5), inset -0.1em -0.1em 0.1em 0 rgba(0,0,0,0.5);
 }
 
 .App main {
@@ -23,6 +26,6 @@
 }
 
 .App main h1 {
-  color: var(--secondary-dark);
+  color: var(--font);
   margin-bottom: 5vmin;
 }
