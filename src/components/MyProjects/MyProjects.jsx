@@ -49,7 +49,7 @@ const handleDeleteProject = id => {
               state = {{project}}
               className="project-link"
           >
-            <img className="project-image" src={project.image.includes(".jpg") || project.image.includes(".png") ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your Project" ></img>
+            <img className="project-image" src={project.image && (project.image.includes(".jpg") || project.image.includes(".png")) ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your Project" ></img>
           </Link>
           
           <div className="project-actions">
