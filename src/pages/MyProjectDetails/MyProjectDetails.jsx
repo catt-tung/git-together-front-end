@@ -29,11 +29,14 @@ const MyProjectDetails = (props) => {
   
   const handleDeleteGoal = async (projectId, goalId) => {
     const newGoals = await projectService.deleteGoal(projectId, goalId)
-
     setGoals(goals.filter(goal => goal._id !== goalId))
-
   }
 
+  const handleUpdateComplete = async (goalId, projectId) => {
+    const updatedProject = await projectService.updateGoal(goalId, projectId)
+    console.log(updatedProject)
+    setProject(updatedProject)
+  }
 
   return ( 
     <>
@@ -66,7 +69,7 @@ const MyProjectDetails = (props) => {
             <>
               <tr>
                 <td className='table-checkbox'>
-                  <input type="checkbox"></input>
+                  <input type="checkbox" onClick={() => handleUpdateComplete(goal._id, project._id)}></input>
                 </td>
                 <td>
                   {goal.goal}
