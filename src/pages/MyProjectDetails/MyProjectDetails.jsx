@@ -68,7 +68,7 @@ const MyProjectDetails = (props) => {
           {goals.map(goal => 
             <>
               <tr>
-                <td className='table-checkbox'>
+                <td className='align-center'>
                   <input type="checkbox" onClick={() => handleUpdateComplete(goal._id, project._id)}></input>
                 </td>
                 <td>
@@ -77,8 +77,8 @@ const MyProjectDetails = (props) => {
                 <td>
                   {new Date(goal.date).toLocaleDateString()}
                 </td>
-                <td>
-                  <button onClick={() => handleDeleteGoal(project._id, goal._id)}>delete</button>
+                <td className='align-center'>
+                  <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
                 </td>
               </tr>
             </>
