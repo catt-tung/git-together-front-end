@@ -54,19 +54,22 @@ const SocialFeed = (props) => {
 
             {post.author._id === props.user.profile ?
               <>
-              <button onClick={() => handleDeletePost(post._id)}>Delete</button>
+                <button onClick={() => handleDeletePost(post._id)}>
+                  Delete
+                </button>
               
-            <Link
-              to='/editSocialPost'
-              state={{post}}
-            >
-              <button>
-                Edit
-              </button>
-            </Link>
-            </>
+                <Link
+                  to='/editSocialPost'
+                  state={{post}}
+                >
+                  <button>
+                    Edit
+                  </button>
+                </Link>
+              </>
              : 
-             <></>
+              <>
+              </>
              }
 
             {/* Post's comments section */}
@@ -90,8 +93,18 @@ const SocialFeed = (props) => {
                           <br></br>
                           {new Date(comment.createdAt).toLocaleDateString()}
                         </p>
-                        <button onClick={async () => await handleDeleteComment(post._id, comment._id)}>X</button>
-                      </>
+                        
+                        {comment.author._id === props.user.profile ?
+                          <>
+                            <button onClick={async () => await handleDeleteComment(post._id, comment._id)}>
+                              X
+                            </button>
+                          </>
+                        :
+                          <>
+                          </>
+                        }
+                    </>
                   )}
                 </>
               </section>
