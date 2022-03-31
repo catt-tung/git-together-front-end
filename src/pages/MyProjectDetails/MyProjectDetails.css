@@ -7,6 +7,11 @@ h2 {
   padding: 10px;
 }
 
+h3 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 img {
   width: 500px;
   height: auto;
@@ -15,10 +20,23 @@ img {
 .project-container {
   margin: 20px;
   padding: 30px;
+  word-wrap: break-word;
+  width: 80vw;
+  height: auto;
+  max-width: 1000px;
+  background-color: lightgray;
+  color: black;
+  border: 3px solid black;
+  border-radius: 5px;
 }
 
 #current-project-status {
   justify-content: flex-start;
+}
+
+#goals-table {
+  width: 100%;
+  padding-left: 12vw;
 }
 
 td, th {
@@ -37,6 +55,10 @@ td {
 
 .align-center {
   text-align: center;
+}
+
+.x-btn {
+  height: 2rem;
 }
 
 tr:nth-child(even) td {
