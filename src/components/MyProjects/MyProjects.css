@@ -1,5 +1,5 @@
 a:hover {
-  background-color: lightgray;
+  background-color: rgb(161, 161, 161);
 }
 
 button {
@@ -9,20 +9,58 @@ button {
   font-size:1.2rem
 }
 
-.project-container {
-  text-align: center;
-  margin: 10px 0;
-  padding: 10px 30px;
+.all-projects {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  width: 90vw;
+  overflow: hidden;
+}
+
+.create-button {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.create-project:hover {
+  background-color: var(--background);
+}
+
+.project-actions {
+  padding: 5px;
+  padding-bottom: 10px;
+  background-color: rgb(161, 161, 161);
+  width: auto;
+  border: 3px solid black;
   border-radius: 5px;
+  border-top: none ;
+}
+
+.project-container {
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .project-link {
   color: var(--purple);
   font-weight: 600;
+  font-size: 2rem;
+  padding: 0;
 }
 
 .project-image {
-  width: 100px;
+  width: 400px;
+  height: 350px;
+  margin: 0;
+  padding: 0;
   border: 3px solid black;
+  border-radius: 5px;
   background-color: lightgray;
 }

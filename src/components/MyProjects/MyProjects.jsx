@@ -28,20 +28,39 @@ const handleDeleteProject = id => {
   return ( 
     <>
       <h1>List of created projects</h1>
+
+        <Link
+          to='/myProjects/new'
+          state = {{repoList}}
+          className="create-project"
+        >
+          <button className="create-button">
+            Create Project
+          </button>
+        </Link>
+
+      <section className="all-projects">
       {projects.map(project => (
         project.owner === profile._id ?
         <div className="project-container">
           
           <Link
-            to='/project'
-            state = {{project}}
-            className="project-link"
+              to='/project'
+              state = {{project}}
+              className="project-link"
           >
-            {project.name}
+            <img className="project-image" src={project.image.includes(".jpg") || project.image.includes(".png") ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your Project" ></img>
           </Link>
-
-        <img classname="project-image" src={project.image.includes(".jpg") || project.image.includes(".png") ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your Project" ></img>
-
+          
+          <div className="project-actions">
+            <Link
+              to='/project'
+              state = {{project}}
+              className="project-link"
+            >
+              {project.name}
+            </Link>
+            <br></br>
             <Link
               to='/editProject'
               state={{project}}
@@ -56,18 +75,13 @@ const handleDeleteProject = id => {
             >
               Delete Project
             </button>
+            </div>
         </div>
         :
         <>
         </>
         ))}
-        
-        <Link
-          to='/myProjects/new'
-          state = {{repoList}}
-        >
-          + Create Project
-        </Link>
+        </section>
     </>
   );
 }
