@@ -36,7 +36,8 @@ const MyProjectDetails = (props) => {
 
   return ( 
     <>
-      <h1>{project.repo}</h1>
+      <h1>{project.name}</h1>
+      <h2>{project.repo}</h2>
       <h3>Current Project Status</h3>
       <h5>Repostory name: {project.repo}</h5>
       <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>

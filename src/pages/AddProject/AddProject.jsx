@@ -13,6 +13,7 @@ const AddProject = () => {
   }, [])
 
   const [formData, setFormData] = useState({
+		name: '',
     repo: '',
     photo: '',
     completionDate: '',
@@ -47,6 +48,18 @@ const AddProject = () => {
       <h1>Create a New Project</h1>
       <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
+					<label htmlFor="name-input" className="form-label">
+            Project Name:
+					</label>
+					<input 
+						type="test"
+						className="form-control"
+						id="name-input"
+						name="name"
+            value={formData.name}
+            onChange={handleChange}
+						required
+					/>
 					<label htmlFor="repo-input" className="form-label">
             Select a repository:
 					</label>

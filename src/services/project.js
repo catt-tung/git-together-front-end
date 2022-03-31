@@ -2,9 +2,14 @@ import { Octokit } from "@octokit/core"
 import AddProject from "../pages/AddProject/AddProject"
 import * as tokenService from './tokenService'
 
-const octokit = new Octokit()
+const octokit = new Octokit({auth: "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"})
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/projects`
+
+function getProjects() {
+  return fetch(`${BASE_URL}`)
+  .then(res => res.json())
+}
 
 async function getRepos(gitUser) {
   
@@ -111,5 +116,6 @@ export {
   getAvatar,
   getProjectDetails,
   deleteGoal,
+  getProjects,
   deleteOne,
 }
