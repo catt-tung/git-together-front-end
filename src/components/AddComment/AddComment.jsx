@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useCollapse from 'react-collapsed'
-import * as postService from '../../services/posts';
 
 
 const AddComment = (props) => {
@@ -41,10 +40,10 @@ const AddComment = (props) => {
         
         <section {...getCollapseProps()}>
           <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
-            <div>
-              <textarea 
+            <div className='comment-form'>
+              <textarea
                 type="text"
-                id="name-input"
+                id="comment-input"
                 name="content"
                 value={formData.content}
                 onChange={handleChange}
