@@ -6,6 +6,11 @@ import * as projectService from '../../services/project'
 
 const MyProjectDetails = (props) => {
   const location = useLocation()
+
+  const handleDeleteGoal = (projectid, goalid) => {
+    projectService.deleteGoal(projectid, goalid)
+  }
+
   const [goals, setGoals] = useState([])
   const [project, getProject] = useState([])
 
@@ -28,6 +33,7 @@ const MyProjectDetails = (props) => {
   }
 
 
+
   return ( 
     <>
       <h1>{project.repo}</h1>
@@ -36,12 +42,12 @@ const MyProjectDetails = (props) => {
       <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
       <h5>Project Management List</h5>
       <ul>
-      {goals.map(goal => 
-        <li key={goal._id}>{goal.goal} {new Date(goal.date).toLocaleDateString()}{}</li>
+      {location.state.project.goals.map(goal => 
+        <li key={goal._id}>{goal.goal}{new Date(goal.date).toLocaleDateString()}<button onClick={() => handleDeleteGoal(location.state.project._id, goal._id)}>delete</button></li>
         )}
       </ul>
-      
-      <AddGoal projectid={project._id} handleAddGoal={handleAddGoal} />
+      <AddGoal projectid={location.state.project._id} />
+
     </>
   );
 }
