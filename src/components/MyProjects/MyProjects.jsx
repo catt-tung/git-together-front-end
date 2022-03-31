@@ -19,6 +19,10 @@ useEffect(() => {
 
 console.log(profile)
 
+const handleDeleteProject = id => {
+  setProjects(projects.filter(project => project._id !== id))
+}
+
   return ( 
     <>
 
@@ -28,7 +32,8 @@ console.log(profile)
         <div>
           <Link
           to='/project'
-          state = {{project}}>
+          state = {{project}}
+          >
           {project.repo}
           </Link>
 
@@ -40,7 +45,11 @@ console.log(profile)
                 Edit Project
               </button>
             </Link>
-            <button>Delete Project</button>
+            <button 
+            onClick={() => handleDeleteProject(project._id)}
+            >
+              Delete Project
+            </button>
         </div>
         :
         <>
