@@ -57,7 +57,7 @@ const MyProjectDetails = (props) => {
       <div className="project-details-container" id="current-project-status">
         <h3>Current Project Status</h3>
         <h5>Repostory: 
-          <Link
+          <Link className="repo-link-in-current-project"
           to={gitLink}>
           {project.repo}
           </Link>
