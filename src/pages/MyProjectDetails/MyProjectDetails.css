@@ -38,7 +38,15 @@ h3 {
 }
 
 #current-project-status {
-  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#progress-bar-span {
+  display: flex;
+  flex-direction: column;
+  
 }
 
 #goals-table {
