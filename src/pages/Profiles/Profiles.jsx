@@ -31,37 +31,35 @@ const Profiles = ({user}) => {
         <>
           {profiles.map(profile =>
           profile._id === userProfile._id ?
-          
-          <div key={profile._id}>
-            <section className="profile-card-on-profiles-page">
-              <img className="profile-image-on-profiles-page" src={profile.avatar ? profile.avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="" />
-              <Link 
-              to="/myProjects"
-              state={{profile}}
-              >
-                {profile.name} 
-              </Link>
-            </section>
-          </div>
-
-          :
-
-          <div key={profile._id}>
-            <section className="profile-card-on-profiles-page">
-              <img className="profile-image-on-profiles-page" src={profile.avatar ? profile.avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="" />
-              <Link 
-              to="/profile"
-              state={{profile}}
-              >
-                {profile.name}
-              </Link>
-            </section>
-          </div>
-          )}
-        </>
-        
-      :
-        <p>No profiles yet</p>
+            <div key={profile._id}>
+              <section className="profile-card-on-profiles-page">
+                <Link className='profile-link-on-profiles-page'
+                to="/myProjects"
+                state={{profile}}
+                >
+                  <img className="profile-image-on-profiles-page" src={profile.avatar ? profile.avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="" />
+                  {profile.name}
+                </Link>
+              </section>
+            </div>
+            :
+            <div key={profile._id}>
+              <section className="profile-card-on-profiles-page">
+                
+                <Link
+                className='profile-link-on-profiles-page'
+                to="/profile"
+                state={{profile}}
+                >
+                  <img className="profile-image-on-profiles-page" src={profile.avatar ? profile.avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="" />
+                  {profile.name}
+                </Link>
+              </section>
+            </div>
+            )}
+            </> 
+              :
+            <p>No profiles yet</p>
       }
     </>
   )

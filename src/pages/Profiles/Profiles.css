@@ -13,3 +13,7 @@
   text-align: center;
 }
 
+.profile-link-on-profiles-page {
+  display: flex;
+  flex-direction: column;
+}
