@@ -60,7 +60,8 @@ const SocialFeed = (props) => {
       >
         {isExpanded ? 'Collapse' : 'All Comments'}
       </button>
-
+      
+      <div className='all-posts-in-SF'>
       {posts.map((post) => (
         <>
           <div key={post._id} className='post-container'>
@@ -70,7 +71,7 @@ const SocialFeed = (props) => {
                 src={getPic(post.author.gitUser)} alt="It's You!" 
               />
               <Link
-                to='/profile'
+                to='/socialFeed'
                 state={post.author}
                 className="author-profile-link"
               >
@@ -150,8 +151,8 @@ const SocialFeed = (props) => {
         </>
       ))}
 
+    </div>
     </>
-      
   );
 }
 

@@ -29,6 +29,10 @@ button:hover {
   font-size: 1.5rem;
 }
 
+.all-posts-in-SF {
+  margin-bottom: 30px;
+}
+
 .author-profile-link {
   color: var(--purple);
   font-weight: 600;
@@ -74,6 +78,7 @@ button:hover {
 .comment {
   background-color: white;
   border: 2px solid black;
+  border-radius: 5px;
   background-color: rgb(144, 144, 144);
   margin: 5px auto;
   padding-top: 15px;
