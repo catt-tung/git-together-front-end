@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDetails } from '../../services/profileService';
 import { useLocation, Link } from 'react-router-dom';
-import { getAvatar, getProjects } from '../../services/project';
+import { getProjects } from '../../services/project';
 import "./ProfileDetails.css"
 
 const ProfileDetails = () => {

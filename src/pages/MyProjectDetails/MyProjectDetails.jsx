@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import AddGoal from "../../components/Goals/Goals";
 import { getProjectDetails, calcProgress } from '../../services/project';
 import { useLocation } from "react-router-dom";
 import * as projectService from '../../services/project'
 import './MyProjectDetails.css'
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import { render } from '@testing-library/react';
 import { Link } from 'react-router-dom';
 import { getDetails } from '../../services/profileService';
 
@@ -27,7 +26,6 @@ const MyProjectDetails = (props) => {
       setProject(project)
       setGoals(project.goals)
     })
-    console.log(profile)
   }, [])
   
   useEffect(() => {

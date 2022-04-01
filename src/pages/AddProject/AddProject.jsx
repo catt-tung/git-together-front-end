@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import AddGoal from "../../components/Goals/Goals";
 import { getGoals, getRepos, createProject } from '../../services/project'
 import { useNavigate } from 'react-router-dom';
 import { getDetails } from '../../services/profileService';
@@ -36,8 +35,6 @@ const AddProject = ({ user }) => {
 
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
-		console.log(evt.target.value)
-		console.log(formData)
   }
 
   const [validForm, setValidForm] = useState(false)
