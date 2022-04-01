@@ -49,11 +49,12 @@ const MyProjectDetails = (props) => {
     <>
       <h1>{project.name}</h1>
       <img className='project-details-image' src={project.image}></img>
+      <h2>{project.repo}</h2>
       <div className="project-details-container" id="current-project-status">
         <h3>Current Project Status</h3>
-        <h5>Repository name: {project.repo}</h5>
+        <h5>Repostory name: {project.repo}</h5>
         <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
-        <span id="progress-bar-span">
+        <span id="progress-bar-aligner">
           <ProgressBar animated now={progress} />
         </span>
       </div>
