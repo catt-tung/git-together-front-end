@@ -48,15 +48,15 @@ const MyProjectDetails = (props) => {
   return ( 
     <>
       <h1>{project.name}</h1>
-      <img src={project.image}></img>
+      <img className='project-details-image' src={project.image}></img>
       <h2>{project.repo}</h2>
-      <div className="project-container" id="current-project-status">
+      <div className="project-details-container" id="current-project-status">
         <h3>Current Project Status</h3>
         <h5>Repostory name: {project.repo}</h5>
         <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
       <ProgressBar animated now={progress} />
       </div>
-      <div className='project-container' id='project-management-list'>
+      <div className='project-details-container' id='project-management-list'>
         <h3>Project Management List</h3>
         <>
           <tr>
@@ -90,7 +90,7 @@ const MyProjectDetails = (props) => {
                 <td>
                   {new Date(goal.date).toLocaleDateString()}
                 </td>
-                <td className='align-center'>
+                <td id='align-center'>
                   <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
                 </td>
               </tr>

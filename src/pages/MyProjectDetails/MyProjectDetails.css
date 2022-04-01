@@ -1,8 +1,3 @@
-body {
-  display: flex;
-  flex-direction: column;
-}
-
 h2 {
   padding: 10px;
 }
@@ -12,12 +7,12 @@ h3 {
   padding-bottom: 10px;
 }
 
-img {
+.project-details-image {
   width: 500px;
   height: auto;
 }
 
-.project-container {
+.project-details-container {
   margin: 20px;
   padding: 30px;
   word-wrap: break-word;
@@ -53,21 +48,10 @@ td {
   max-width: 18rem;
 }
 
-.align-center {
+#align-center {
   text-align: center;
 }
 
-.x-btn {
-  height: 2rem;
-}
-
-tr:nth-child(even) td {
-  /* background-color: rgb(250,250,250); */
-}
-
-tr:nth-child(odd) td {
-  /* background-color: rgb(245,245,245); */
-}
 .progress{
   width: 50vh
 }
