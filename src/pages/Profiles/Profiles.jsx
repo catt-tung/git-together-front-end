@@ -34,7 +34,7 @@ const Profiles = ({user}) => {
           
           <div key={profile._id}>
             <section className="profile-card-on-profiles-page">
-              <img className="profile-image-on-profiles-page" src={profile.avatar} alt="" />
+              <img className="profile-image-on-profiles-page" src={profile.avatar ? profile.avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="" />
               <Link 
               to="/myProjects"
               state={{profile}}
@@ -48,7 +48,7 @@ const Profiles = ({user}) => {
 
           <div key={profile._id}>
             <section className="profile-card-on-profiles-page">
-              <img className="profile-image-on-profiles-page" src={profile.avatar} alt="" />
+              <img className="profile-image-on-profiles-page" src={profile.avatar ? profile.avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="" />
               <Link 
               to="/profile"
               state={{profile}}
