@@ -35,6 +35,10 @@ const SocialFeed = (props) => {
     setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
   }
 
+  function getPic(url){
+    return `https://github.com/${url}.png`
+  }
+
   return ( 
     <>
       <h1>Social Feed</h1>
@@ -56,12 +60,29 @@ const SocialFeed = (props) => {
       >
         {isExpanded ? 'Collapse' : 'All Comments'}
       </button>
-
+      
+      <div className='all-posts-in-SF'>
       {posts.map((post) => (
         <>
           <div key={post._id} className='post-container'>
+            <div>
+              <img 
+                className="post-author-picture" 
+                src={getPic(post.author.gitUser)} alt="It's You!" 
+              />
+              <Link
+                to='/socialFeed'
+                state={post.author}
+                className="author-profile-link"
+              >
+                {post.author.gitUser}
+              </Link>
+            </div>
+
             <h4 className='post-body'>{post.content}</h4>
-            <h5>Posted by: {post.author.gitUser}</h5>
+
+            <p className='post-date'>Posted on: {new Date(post.createdAt).toLocaleDateString()}</p>
+
             <AddComment post={post} handleAddComment={handleAddComment}/>
 
             {post.author._id === props.user.profile ?
@@ -94,12 +115,21 @@ const SocialFeed = (props) => {
                     {post.comments.map(comment => 
                       <div className='comment'>
                         <p key={comment._id}>
-                          <h6 className='comment-body'>{comment.content}</h6>
                           <div className='comment-details'>
-                          {comment.author.gitUser}
-                          <br></br>
-                          {new Date(comment.createdAt).toLocaleDateString()}
+                            <img 
+                              className="post-author-picture" 
+                              src={getPic(comment.author.gitUser)} alt="It's You!" 
+                            />
+                            <Link
+                              to='/profile'
+                              state={post.author}
+                              className="comment-author-profile-link"
+                            >
+                              {comment.author.gitUser}
+                            </Link><br/>
                           </div>
+                          <h6 className='comment-body'>{comment.content}</h6>
+                          <p className='post-date'>Posted on: {new Date(comment.createdAt).toLocaleDateString()}</p>
                         </p>
                         {comment.author._id === props.user.profile ?
                           <>
@@ -121,8 +151,8 @@ const SocialFeed = (props) => {
         </>
       ))}
 
+    </div>
     </>
-      
   );
 }
 
