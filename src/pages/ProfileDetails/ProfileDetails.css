@@ -1,0 +1,35 @@
+.all-profile-projects {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90vw;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.profile-projects-header{
+  font-size: 3rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.profile-project-image {
+  width: 250px;
+  height: 250px;
+}
+
+.profile-details-pic {
+  border-radius: 50%;
+}
+
+.profile-project-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+  margin: 10px 30px;
+}
+
+.profile-project-name {
+  font-size: 1.5rem;
+}
