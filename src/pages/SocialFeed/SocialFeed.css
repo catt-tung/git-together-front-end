@@ -21,6 +21,12 @@ button:hover {
   font-size: 1.5rem;
 }
 
+.author-profile-link {
+  background-color: lightgray;
+  color: var(--purple);
+  font-weight: 600;
+}
+
 .edit-post {
   padding: 0;
 }
@@ -78,6 +84,12 @@ button:hover {
   display: inline-block;
   margin-top: -5px;
   margin-bottom: 10px;
+}
+
+.post-author-picture {
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--purple);
 }
 
 #comment-input {

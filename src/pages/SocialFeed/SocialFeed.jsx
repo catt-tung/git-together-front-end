@@ -35,6 +35,10 @@ const SocialFeed = (props) => {
     setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
   }
 
+  function getPic(url){
+    return `https://github.com/${url}.png`
+  }
+
   return ( 
     <>
       <h1>Social Feed</h1>
@@ -60,8 +64,22 @@ const SocialFeed = (props) => {
       {posts.map((post) => (
         <>
           <div key={post._id} className='post-container'>
+            <div>
+              <img 
+                className="post-author-picture" 
+                src={getPic(post.author.gitUser)} alt="It's You!" 
+              />
+              <Link
+                to='/profile'
+                state={post.author}
+                className="author-profile-link"
+              >
+                {post.author.gitUser}
+              </Link>
+            </div>
+
             <h4 className='post-body'>{post.content}</h4>
-            <h5>Posted by: {post.author.gitUser}</h5>
+
             <AddComment post={post} handleAddComment={handleAddComment}/>
 
             {post.author._id === props.user.profile ?

@@ -7,7 +7,6 @@ import './Profiles.css'
 const Profiles = ({user}) => {
   const [profiles, setProfiles] = useState([])
   const [userProfile, getProfile] = useState([])
-  const [avatar, setAvatar] = useState([])
 
   useEffect(()=> {
     getDetails(user.profile)
@@ -21,7 +20,6 @@ const Profiles = ({user}) => {
     profiles.map(profile => {
       profile.avatar = `https://github.com/${profile.gitUser}.png`
     })
-
   }, [profiles, profiles.avatar])
 
   return (
