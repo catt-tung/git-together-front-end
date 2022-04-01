@@ -22,9 +22,12 @@ button:hover {
 }
 
 .author-profile-link {
-  background-color: lightgray;
   color: var(--purple);
   font-weight: 600;
+}
+
+.author-profile-link:hover{
+  background-color: lightgray;
 }
 
 .edit-post {
