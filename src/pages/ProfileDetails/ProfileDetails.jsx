@@ -20,7 +20,6 @@ const ProfileDetails = () => {
     
     const avatar = `https://github.com/${profileDetails.gitUser}.png`
     
-
     userProjects.map(project => 
       console.log(project.name)
     )
@@ -28,21 +27,28 @@ const ProfileDetails = () => {
   return ( 
     <>
       <h3>
-        <img src={avatar} alt="" />
         {profileDetails.name}'s Page
-        </h3>
-
-      <h2> Projects </h2>
+      </h3>
       
+      <img src={avatar} alt="" />
 
+      <h2>Projects</h2>
+      
       {userProjects.map(project => 
-        
+        <div className='profile-project-container'>
           <Link
-          to='/project'
-        state = {{project}}>
-          {project.name}
-          </Link>   
-        
+            to='/project'
+            state = {{project}}
+          >
+            <img 
+              className="profile-project-image" 
+              src={project.image && (project.image.includes(".jpg") || project.image.includes(".png")) ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} 
+              alt="Your Project" 
+            >
+            </img>
+            {project.name}
+          </Link>
+        </div>    
         )}
         
     </>
