@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { getDetails } from '../../services/profileService';
 
 
-const MyProjectDetails = (props) => {
+const MyProjectDetails = (user) => {
   const location = useLocation()
   const [goals, setGoals] = useState([])
   const [project, setProject] = useState([])
@@ -49,6 +49,9 @@ const MyProjectDetails = (props) => {
     setGoals(updatedProject.goals)
     setProject(updatedProject)
   }
+
+  const owner = user.user.profile === project.owner
+
   return ( 
     <>
       <h1>{project.name}</h1>
@@ -66,6 +69,8 @@ const MyProjectDetails = (props) => {
           <ProgressBar animated now={progress} />
         </span>
       </div>
+      {owner ?
+      <>
       <div id='project-management-list'>
         <h3>Project Management List</h3>
           <div>
@@ -90,8 +95,8 @@ const MyProjectDetails = (props) => {
                   <td className='align-center'>
                     <input 
                     type="checkbox" 
-                      onClick={() => handleUpdateComplete(goal._id, project._id)}
-                      defaultChecked={goal.complete}
+                    onClick={() => handleUpdateComplete(goal._id, project._id)}
+                    defaultChecked={goal.complete}
                     >
                     </input>
                   </td>
@@ -113,8 +118,52 @@ const MyProjectDetails = (props) => {
       <div className='project-details-container' id='add-goal'>
         <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
       </div>
+      </>
+      
+      :
+      <>
+      <div id='project-management-list'>
+        <h3>Project Management List</h3>
+          <div>
+            <>
+            <tr>
+              <th>
+                Done?
+              </th>
+              <th>
+                Goal
+              </th>
+              <th>
+                Complete by
+              </th>
+            </tr>
+            {goals.map(goal => 
+              <>
+                <tr>
+                  <td className='align-center'>
+                    <input 
+                    type="checkbox" 
+                    defaultChecked={goal.complete}
+                    disabled
+                    >
+                    </input>
+                  </td>
+                  <td>
+                    {goal.goal}
+                  </td>
+                  <td>
+                    {new Date(goal.date).toLocaleDateString()}
+                  </td>
+                </tr>
+              </>
+              )}
+            </>
+          </div>
+      </div>
+      </>
+      }
     </>
-  );
+  )
 }
 
 export default MyProjectDetails;
