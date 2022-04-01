@@ -1,0 +1,12 @@
+#add-project-form-container {
+  margin: 20px;
+  padding: 60px 90px 60px 90px;
+  word-wrap: break-word;
+  width: 60vw;
+  height: auto;
+  max-width: 1000px;
+  background-color: lightgray;
+  color: black;
+  border: 3px solid black;
+  border-radius: 5px;
+}
