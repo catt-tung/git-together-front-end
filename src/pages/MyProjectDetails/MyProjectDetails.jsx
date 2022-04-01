@@ -54,7 +54,9 @@ const MyProjectDetails = (props) => {
         <h3>Current Project Status</h3>
         <h5>Repostory name: {project.repo}</h5>
         <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
-      <ProgressBar animated now={progress} />
+        <span id="progress-bar-aligner">
+          <ProgressBar animated now={progress} />
+        </span>
       </div>
       <div id='project-management-list'>
         <h3>Project Management List</h3>
