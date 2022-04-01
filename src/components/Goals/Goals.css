@@ -1,4 +1,4 @@
-form {
+.add-goals-form {
   padding: 10px 10px 0px 10px;
   display: flex;
   flex-direction: row;
@@ -10,7 +10,7 @@ form {
   flex-direction: column;
 }
 
-span {
+.goal-btnn {
   display: flex;
   align-self: center;
 }
