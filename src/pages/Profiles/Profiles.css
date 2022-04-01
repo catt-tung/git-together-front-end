@@ -1,3 +1,11 @@
+#all-profiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90vw;
+  overflow: hidden;
+}
+
 .profile-image-on-profiles-page {
   width: 100px;
   height: 100px;
