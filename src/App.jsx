@@ -75,7 +75,7 @@ const App = () => {
           />
           <Route
             path="/project"
-            element={user ? <MyProjectDetails /> : <Navigate to="/login" />} 
+            element={user ? <MyProjectDetails user={user} /> : <Navigate to="/login" />} 
           />
           <Route
             path="/myProjects/new"
