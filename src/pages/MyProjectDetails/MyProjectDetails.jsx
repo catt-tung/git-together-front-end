@@ -6,6 +6,8 @@ import * as projectService from '../../services/project'
 import './MyProjectDetails.css'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import { render } from '@testing-library/react';
+import { Link } from 'react-router-dom';
+import { getDetails } from '../../services/profileService';
 
 
 const MyProjectDetails = (props) => {
@@ -13,18 +15,23 @@ const MyProjectDetails = (props) => {
   const [goals, setGoals] = useState([])
   const [project, setProject] = useState([])
   const [progress, setProgress] = useState(0)
+  const [gitLink, setLink] = useState([])
+  const [profile, setProfile] = useState([])
   
   
   useEffect(() => {
+    getDetails(location.state.project.owner)
+    .then(profile => setProfile(profile))
     getProjectDetails(location.state.project._id)
     .then(project => {
       setProject(project)
       setGoals(project.goals)
     })
-    console.log(project)
+    console.log(profile)
   }, [])
   
   useEffect(() => {
+    setLink(`https://github.com/${profile.gitUser}/${project.repo}`)
     setProgress(calcProgress(goals))
   }, [goals])
 
@@ -44,7 +51,6 @@ const MyProjectDetails = (props) => {
     setGoals(updatedProject.goals)
     setProject(updatedProject)
   }
-  
   return ( 
     <>
       <h1>{project.name}</h1>
@@ -52,7 +58,12 @@ const MyProjectDetails = (props) => {
       <h2>{project.repo}</h2>
       <div className="project-details-container" id="current-project-status">
         <h3>Current Project Status</h3>
-        <h5>Repostory name: {project.repo}</h5>
+        <h5>Repostory: 
+          <Link
+          to={gitLink}>
+          {project.repo}
+          </Link>
+          </h5>
         <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
         <span id="progress-bar-aligner">
           <ProgressBar animated now={progress} />
