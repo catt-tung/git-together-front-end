@@ -4,8 +4,6 @@ import { getDetails } from "../../services/profileService";
 import { getRepos, getGoals, deleteOne, getProjectDetails } from "../../services/project";
 import "./MyProjects.css"
 
-
-
 const MyProjects = ({ user }) => {
 const [repoList, setRepoList] = useState([])
 const [projects, setProjects] = useState([])
@@ -23,7 +21,6 @@ const handleDeleteProject = id => {
   .then(deletedProject => {
     setProjects(projects.filter(project => project._id !== deletedProject._id))})
 }
-
 
   return ( 
     <>
@@ -49,7 +46,12 @@ const handleDeleteProject = id => {
               state = {{project}}
               className="project-link"
           >
-            <img className="project-image" src={project.image && (project.image.includes(".jpg") || project.image.includes(".png")) ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your Project" ></img>
+            <img 
+              className="project-image" 
+              src={project.image && (project.image.includes(".jpg") || project.image.includes(".png")) ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} 
+              alt="Your Project" 
+            >
+            </img>
           </Link>
           
           <div className="project-actions">

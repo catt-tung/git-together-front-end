@@ -15,7 +15,14 @@ const Profiles = ({user}) => {
     profileService.getAllProfiles()
     .then(profiles => setProfiles(profiles))
 
-  }, [])
+  }, [user.profile])
+
+  useEffect(()=> {
+    profiles.map(profile => {
+      profile.avatar = `https://github.com/${profile.gitUser}.png`
+    })
+
+  }, [profiles, profiles.avatar])
 
   useEffect(()=> {
     profiles.map(profile => {

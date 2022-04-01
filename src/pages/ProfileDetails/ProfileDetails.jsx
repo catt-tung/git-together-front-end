@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getDetails } from '../../services/profileService';
 import { useLocation, Link } from 'react-router-dom';
 import { getAvatar, getProjects } from '../../services/project';
+import "./ProfileDetails.css"
 
 const ProfileDetails = () => {
   const [profileDetails, setProfileDetails] = useState({})
@@ -19,30 +20,36 @@ const ProfileDetails = () => {
     
     const avatar = `https://github.com/${profileDetails.gitUser}.png`
     
-
-    userProjects.map(project => 
-      console.log(project.name)
-    )
-
   return ( 
     <>
-      <h3>
-        <img src={avatar} alt="" />
+      <h1>
         {profileDetails.name}'s Page
-        </h3>
-
-      <h2> Projects </h2>
+      </h1>
       
+      <img className="profile-details-pic" src={avatar ? avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="It's You!"/>
 
+      <h2 className='profile-projects-header'>Projects</h2>
+      
+      <section className="all-profile-projects">
       {userProjects.map(project => 
-        
+        <div className='profile-project-container'>
           <Link
-          to='/project'
-        state = {{project}}>
-          {project.name}
-          </Link>   
-        
+            to='/project'
+            state = {{project}}
+          >
+            <img 
+              className="profile-project-image" 
+              src={project.image && (project.image.includes(".jpg") || project.image.includes(".png")) ? project.image : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} 
+              alt="Your Project" 
+            >
+            </img>
+          </Link>
+          <div className='profile-project-name'>
+            {project.name}
+          </div>
+        </div>    
         )}
+        </section>
         
     </>
   );
