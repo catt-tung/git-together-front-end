@@ -13,8 +13,6 @@ button {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
   width: 90vw;
   overflow: hidden;
 }
@@ -23,6 +21,8 @@ button {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .create-project:hover {
@@ -40,7 +40,7 @@ button {
 }
 
 .project-container {
-  margin: 0;
+  margin: 20px;
   padding: 0;
   border-radius: 5px;
   display: flex;
@@ -58,8 +58,6 @@ button {
 .project-image {
   width: 400px;
   height: 350px;
-  margin: 0;
-  padding: 0;
   border: 3px solid black;
   border-radius: 5px;
   background-color: lightgray;

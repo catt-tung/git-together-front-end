@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getDetails } from '../../services/profileService';
-import styles from './Landing.module.css'
+import "./Landing.css"
 
 const Landing = ({ user }) => {
   const [profile, setProfile] = useState([])
@@ -24,9 +24,9 @@ const Landing = ({ user }) => {
   
     
   return (
-    <main className={styles.container}>
+    <main>
       <h1>Hello, {user ? user.name : 'friend'}</h1>
-      <img src={user ? avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your GitHub Profile Pic"></img>
+      <img id="landing-page-image"src={user ? avatar : "https://cdn-icons-png.flaticon.com/512/889/889192.png"} alt="Your GitHub Profile Pic"></img>
       
     </main>
   )
