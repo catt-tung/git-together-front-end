@@ -56,49 +56,51 @@ const MyProjectDetails = (props) => {
         <h5>Projected Completion Date: {new Date(project.completionDate).toLocaleDateString()}</h5>
       <ProgressBar animated now={progress} />
       </div>
-      <div className='project-details-container' id='project-management-list'>
+      <div id='project-management-list'>
         <h3>Project Management List</h3>
-        <>
-          <tr>
-            <th>
-              Done?
-            </th>
-            <th>
-              Goal
-            </th>
-            <th>
-              Complete by
-            </th>
-            <th>
-              Remove
-            </th>
-          </tr>
-          {goals.map(goal => 
+          <div>
             <>
-              <tr>
-                <td className='align-center'>
-                  <input 
-                  type="checkbox" 
-                    onClick={() => handleUpdateComplete(goal._id, project._id)}
-                    defaultChecked={goal.complete}
-                  >
-                  </input>
-                </td>
-                <td>
-                  {goal.goal}
-                </td>
-                <td>
-                  {new Date(goal.date).toLocaleDateString()}
-                </td>
-                <td id='align-center'>
-                  <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
-                </td>
-              </tr>
+            <tr>
+              <th>
+                Done?
+              </th>
+              <th>
+                Goal
+              </th>
+              <th>
+                Complete by
+              </th>
+              <th>
+                Remove
+              </th>
+            </tr>
+            {goals.map(goal => 
+              <>
+                <tr>
+                  <td className='align-center'>
+                    <input 
+                    type="checkbox" 
+                      onClick={() => handleUpdateComplete(goal._id, project._id)}
+                      defaultChecked={goal.complete}
+                    >
+                    </input>
+                  </td>
+                  <td>
+                    {goal.goal}
+                  </td>
+                  <td>
+                    {new Date(goal.date).toLocaleDateString()}
+                  </td>
+                  <td id='align-center'>
+                    <button onClick={() => handleDeleteGoal(project._id, goal._id)}>&times;</button>
+                  </td>
+                </tr>
+              </>
+              )}
             </>
-            )}
-        </>
+          </div>
       </div>
-      <div className='project-container' id='add-goal'>
+      <div className='project-details-container' id='add-goal'>
         <AddGoal projectid={project._id} handleAddGoal={handleAddGoal}/>
       </div>
     </>
