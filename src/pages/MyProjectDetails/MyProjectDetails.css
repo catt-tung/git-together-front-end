@@ -10,6 +10,7 @@ h3 {
 .project-details-image {
   width: 500px;
   height: auto;
+  margin: 20px;
 }
 
 .project-details-container {
@@ -76,4 +77,8 @@ td {
 
 .progress{
   width: 50vh
+}
+
+.repo-link-in-current-project{
+  color: #561296
 }

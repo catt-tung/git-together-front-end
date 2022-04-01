@@ -53,11 +53,10 @@ const MyProjectDetails = (props) => {
     <>
       <h1>{project.name}</h1>
       <img className='project-details-image' src={project.image}></img>
-      <h2>{project.repo}</h2>
       <div className="project-details-container" id="current-project-status">
         <h3>Current Project Status</h3>
         <h5>Repostory: 
-          <Link
+          <Link className="repo-link-in-current-project"
           to={gitLink}>
           {project.repo}
           </Link>
