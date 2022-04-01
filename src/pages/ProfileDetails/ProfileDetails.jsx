@@ -3,7 +3,6 @@ import { getDetails } from '../../services/profileService';
 import { useLocation, Link } from 'react-router-dom';
 import { getAvatar, getProjects } from '../../services/project';
 
-
 const ProfileDetails = () => {
   const [profileDetails, setProfileDetails] = useState({})
   const [userProjects, setProjects] = useState([])
