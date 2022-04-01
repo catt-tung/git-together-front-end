@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
 import { Link } from 'react-router-dom'
 import { getDetails } from '../../services/profileService'
+import './Profiles.css'
 
 const Profiles = ({user}) => {
   const [profiles, setProfiles] = useState([])
@@ -13,26 +14,32 @@ const Profiles = ({user}) => {
     .then(profile => getProfile(profile))
     profileService.getAllProfiles()
     .then(profiles => setProfiles(profiles))
-console.log('ping')
+
   }, [user.profile])
 
   useEffect(()=> {
     profiles.map(profile => {
       profile.avatar = `https://github.com/${profile.gitUser}.png`
     })
-    console.log('ping')
+
+  }, [profiles, profiles.avatar])
+
+  useEffect(()=> {
+    profiles.map(profile => {
+      profile.avatar = `https://github.com/${profile.gitUser}.png`
+    })
   }, [profiles, profiles.avatar])
 
   return (
     <>
-      <h1>Hello. This is a list of all the profiles.</h1>
+      <h1>All Profiles</h1>
       {profiles.length ? 
         <>
           {profiles.map(profile =>
           profile._id === userProfile._id ?
           
           <div key={profile._id}>
-            <img src={profile.avatar} alt="" />
+            <img className="profile-image-on-profiles-page" src={profile.avatar} alt="" />
             <Link 
             to="/myProjects"
             state={{profile}}
@@ -44,7 +51,7 @@ console.log('ping')
           :
 
           <div key={profile._id}>
-            <img src={profile.avatar} alt="" />
+            <img className="profile-image-on-profiles-page" src={profile.avatar} alt="" />
             <Link 
             to="/profile"
             state={{profile}}

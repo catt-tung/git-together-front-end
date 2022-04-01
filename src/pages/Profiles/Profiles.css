@@ -1,0 +1,13 @@
+.profile-image-on-profiles-page {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-card-on-profiles-page{
+  margin: 20px;
+  padding: 0;
+  border-radius: 5px;
+  display: flex;
+  text-align: center;
+}
