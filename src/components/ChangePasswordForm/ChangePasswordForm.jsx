@@ -83,8 +83,8 @@ const ChangePasswordForm = props => {
         <button disabled={isFormInvalid()} className={styles.button}>
           Change Password
         </button>
-        <Link to="/">
-          <button>Cancel</button>
+        <Link to="/" className={styles.change}>
+          <button className={styles.button}>Cancel</button>
         </Link>
       </div>
     </form>
