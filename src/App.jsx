@@ -79,7 +79,7 @@ const App = () => {
           />
           <Route
             path="/myProjects/new"
-            element={user ? <AddProject /> : <Navigate to="/login" />} 
+            element={user ? <AddProject user={user} /> : <Navigate to="/login" />} 
           />
           <Route
             path="/editProject"

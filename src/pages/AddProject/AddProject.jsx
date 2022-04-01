@@ -1,16 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AddGoal from "../../components/Goals/Goals";
-import * as projectService from '../../services/project'
+import { getGoals, getRepos, createProject } from '../../services/project'
 import { useNavigate } from 'react-router-dom';
+import { getDetails } from '../../services/profileService';
 
-const AddProject = () => {
+
+const AddProject = ({ user }) => {
 	const navigate = useNavigate()
   const [goals, setGoals] = useState([]) 
+	const [repos, setRepos] = useState([])
+	const [profile, setProfile] = useState([])
 
   useEffect(() => {
-    projectService.getGoals()
+    getGoals()
     .then(goalsData => setGoals(goalsData))
-  }, [])
+		getDetails(user.profile)
+  	.then(profile => setProfile(profile))
+  }, [profile.gitUser, user.profile])
+
+	useEffect(() => {
+		getRepos(profile.gitUser)
+		.then(repos => setRepos(repos))
+		repos.map(repo => {
+			repo.toString()
+		})
+	}, [profile.gitUser])
 
   const [formData, setFormData] = useState({
 		name: '',
@@ -21,6 +35,8 @@ const AddProject = () => {
 
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
+		console.log(evt.target.value)
+		console.log(formData)
   }
 
   const [validForm, setValidForm] = useState(false)
@@ -32,15 +48,15 @@ const AddProject = () => {
 	}, [formData])
 
   const handleAddProject = async newProjectData => {
-    await projectService.createProject(newProjectData)
+    await createProject(newProjectData)
     navigate('/myProjects')
   }
 
 	const handleSubmit = evt => {
+		console.log(formData)
 		evt.preventDefault()
     handleAddProject(formData)
 	}
-
 
   return ( 
     <>
@@ -60,22 +76,18 @@ const AddProject = () => {
             onChange={handleChange}
 						required
 					/>
-					<label htmlFor="repo-input" className="form-label">
-            Select a repository:
-					</label>
-					<input 
-						type="select"
-						className="form-control"
-						id="repo-input"
-						name="repo"
-            value={formData.repo}
-            onChange={handleChange}
-						required
-					/>
+					<label htmlFor="repo-input" className="form-label">Choose Repository:</label>
+						<select name="repo" id="repo-input" value={formData.repo} onChange={handleChange}>
+						{repos.map(repo => 
+							<option >
+							{repo}	
+							</option>
+							)}
+							</select>
 				</div>
         <div className="form-group mb-4">
 					<label htmlFor="photo-input" className="form-label">
-						Upload a photo
+						Enter an image link
 					</label>
 					<input 
 						type="text"
