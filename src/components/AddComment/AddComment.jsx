@@ -30,7 +30,7 @@ const AddComment = (props) => {
 
   return (
     <>
-      <button
+      <button className="add-comment-SF"
           {...getToggleProps({
             onClick: () => setExpanded((prevExpanded) => !prevExpanded),
           })}

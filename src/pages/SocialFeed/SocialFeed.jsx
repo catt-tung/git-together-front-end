@@ -80,7 +80,7 @@ const SocialFeed = (props) => {
 
             <h4 className='post-body'>{post.content}</h4>
 
-            Posted on: {new Date(post.createdAt).toLocaleDateString()} <br/>
+            <p className='post-date'>Posted on: {new Date(post.createdAt).toLocaleDateString()}</p>
 
             <AddComment post={post} handleAddComment={handleAddComment}/>
 
@@ -115,20 +115,20 @@ const SocialFeed = (props) => {
                       <div className='comment'>
                         <p key={comment._id}>
                           <div className='comment-details'>
-              <img 
-                className="post-author-picture" 
-                src={getPic(comment.author.gitUser)} alt="It's You!" 
-              />
-              <Link
-                to='/profile'
-                state={post.author}
-                className="author-profile-link"
-              >
-                {comment.author.gitUser}
-              </Link><br/>
+                            <img 
+                              className="post-author-picture" 
+                              src={getPic(comment.author.gitUser)} alt="It's You!" 
+                            />
+                            <Link
+                              to='/profile'
+                              state={post.author}
+                              className="comment-author-profile-link"
+                            >
+                              {comment.author.gitUser}
+                            </Link><br/>
                           </div>
                           <h6 className='comment-body'>{comment.content}</h6>
-                          Posted on: {new Date(comment.createdAt).toLocaleDateString()}
+                          <p className='post-date'>Posted on: {new Date(comment.createdAt).toLocaleDateString()}</p>
                         </p>
                         {comment.author._id === props.user.profile ?
                           <>

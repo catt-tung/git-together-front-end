@@ -9,6 +9,14 @@ button:hover {
   transform: scale(1.1);
 }
 
+.add-comment-SF {
+  margin-top: 0px;
+}
+
+.post-date {
+  margin-top: 10px;
+}
+
 .add-post {
   margin-top: -10px;
 }
@@ -27,7 +35,16 @@ button:hover {
 }
 
 .author-profile-link:hover{
-  background-color: lightgray;
+  background-color: rgb(192, 192, 192);
+}
+
+.comment-author-profile-link{
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.comment-author-profile-link:hover{
+  background-color: rgb(133, 133, 133);
 }
 
 .edit-post {
@@ -36,7 +53,7 @@ button:hover {
 
 .post-body {
   font-weight: 600;
-  margin: 10px auto;
+  margin: 20px auto;
   font-size: 2rem;
 }
 
@@ -59,12 +76,13 @@ button:hover {
   border: 2px solid black;
   background-color: rgb(144, 144, 144);
   margin: 5px auto;
+  padding-top: 15px;
   height: auto;
 }
 
 .comment-body {
   font-weight: 600;
-  margin: 15px 10px 10px 10px;
+  margin: 25px 10px 10px 10px;
   word-wrap: break-word;
   font-size: 1.5rem;
 }
