@@ -10,6 +10,7 @@ h3 {
 .project-details-image {
   width: 500px;
   height: auto;
+  margin: 20px;
 }
 
 .project-details-container {

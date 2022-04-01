@@ -47,7 +47,7 @@ const Profiles = ({user}) => {
           :
 
           <div key={profile._id}>
-            <section>
+            <section className="profile-card-on-profiles-page">
               <img className="profile-image-on-profiles-page" src={profile.avatar} alt="" />
               <Link 
               to="/profile"
