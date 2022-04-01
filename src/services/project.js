@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/core"
 import AddProject from "../pages/AddProject/AddProject"
 import * as tokenService from './tokenService'
 
-const octokit = new Octokit({auth: "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"})
+const octokit = new Octokit()
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/projects`
 
@@ -14,7 +14,10 @@ function getProjects() {
 async function getRepos(gitUser) {
   
   const response = await octokit.request('GET /users/{username}/repos', {
-    username: gitUser
+    username: gitUser,
+    headers: {
+      'Authorization' : "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"
+  }
   })
 
   const repoData = []
@@ -24,17 +27,6 @@ async function getRepos(gitUser) {
   })
 
   return repoData
-}
-
-async function getAvatar(gitUser) {
-  
-  const response = await octokit.request('GET /users/{username}', {
-    username: gitUser
-  })
-
-  const avatar = response.data.avatar_url
-
-  return avatar
 }
 
 function create(goal, projectid) {
@@ -131,7 +123,6 @@ export {
   getGoals,
   createProject,
   update,
-  getAvatar,
   getProjectDetails,
   deleteGoal,
   getProjects,

@@ -11,7 +11,6 @@ const Landing = ({ user }) => {
     getDetails(user.profile)
     .then(profile => setProfile(profile))
     }
-    console.log('hello')
   }, [])
 
   useEffect(() => {

@@ -24,12 +24,6 @@ const Profiles = ({user}) => {
 
   }, [profiles, profiles.avatar])
 
-  useEffect(()=> {
-    profiles.map(profile => {
-      profile.avatar = `https://github.com/${profile.gitUser}.png`
-    })
-  }, [profiles, profiles.avatar])
-
   return (
     <>
       <h1>All Profiles</h1>
